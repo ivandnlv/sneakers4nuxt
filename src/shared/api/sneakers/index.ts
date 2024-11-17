@@ -3,7 +3,7 @@ import type { SuccessResponse } from '~/src/shared/api/types/responses'
 import type { SneakerDto, SneakerMinDto } from '~/src/shared/api/sneakers/types'
 import type { PaginationQuery, SortQuery } from '~/src/shared/api/types/pagination'
 import type { PaginationResponse } from '~/src/shared/api/types'
-import { api } from '~/src/shared/api/instance'
+// import { api } from '~/src/shared/api/instance'
 import { mockRequest } from '~/src/shared/lib/mock/mock-request'
 import { sneakerByIdMockRequest } from '~/src/shared/api/sneakers/mock/get-by-id'
 import { sneakersListMockResponse } from '~/src/shared/api/sneakers/mock/get-list'
@@ -18,7 +18,7 @@ export namespace SneakersApiType {
       search: string
       brands: string[]
       withSale: boolean
-    }> & SortQuery & PaginationQuery
+    } & SortQuery & PaginationQuery>
 
     export type Response = SuccessResponse<PaginationResponse<SneakerMinDto>>
   }
