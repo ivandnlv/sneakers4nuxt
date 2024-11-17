@@ -4,7 +4,7 @@ import Container from '~/src/shared/ui/Container.vue'
 </script>
 
 <template>
-  <Container class="flex flex-col bg-white rounded-[20px] p-8 mt-[90px]">
+  <Container class="flex flex-col bg-white rounded-[20px] p-8 ">
     <TheHeader />
 
     <slot />
