@@ -29,7 +29,8 @@ const sneakerMock: SneakerDto = {
     'https://i.imgur.com/4qcdEvI.jpeg',
     'https://i.imgur.com/82tdzfU.jpeg'
   ],
-  modelName: 'Nike Blazer Mid Suede'
+  modelName: 'Nike Blazer Mid Suede',
+  brand: 'nike'
 }
 
 export const sneakerByIdMockRequest: SuccessResponse<SneakerDto> = {

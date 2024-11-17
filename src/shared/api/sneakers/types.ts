@@ -16,4 +16,8 @@ export interface SneakerDto extends SneakerMinDto {
   description: string
   photos: string[]
   modelName: string
+  brand: SneakerBrand
+}
+
+export interface SneakerBrand extends EntityBase {
 }

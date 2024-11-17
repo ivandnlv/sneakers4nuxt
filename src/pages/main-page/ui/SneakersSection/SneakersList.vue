@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { useSneakersStore } from '~/src/pages/main-page/model/store/sneakers-store'
+import { useSneakersStore } from '~/src/entities/sneaker/model/store/sneakers-store'
 import Container from '~/src/shared/ui/Container.vue'
 import SneakerCard from '~/src/entities/sneaker/ui/SneakerCard.vue'
 import SneakerCardLoader from '~/src/entities/sneaker/ui/SneakerCardLoader.vue'
