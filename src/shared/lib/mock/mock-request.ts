@@ -4,6 +4,6 @@ export function mockRequest (_?: unknown): Promise<void> {
       if (Math.random() > 0.01) { resolve() }
 
       reject(new Error('Не удалось получить ответ от сервера'))
-    }, 10)
+    }, 50)
   })
 }

@@ -26,6 +26,13 @@ const sneakersList: SneakerMinDto[] = [
     isOnCart: false
   },
   {
+    ...createMockEntityBase('Мужские Кроссовки Under Armour Curry 8'),
+    cover: 'https://i.imgur.com/8Qcrc6x.jpeg',
+    price: 15199,
+    isFavorite: false,
+    isOnCart: false
+  },
+  {
     ...createMockEntityBase('Мужские Кроссовки Nike Kyrie 7'),
     cover: 'https://i.imgur.com/8gzbG5B.jpeg',
     price: 5299,
