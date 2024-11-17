@@ -8,6 +8,22 @@ const main: SitemapRoute = {
   }
 }
 
+const myPurchases: SitemapRoute = {
+  name: 'Мои покупки',
+  route: {
+    name: AppRoutes.myPurchases
+  }
+}
+
+const wishes: SitemapRoute = {
+  name: 'Избранное',
+  route: {
+    name: AppRoutes.wishes
+  }
+}
+
 export const SITEMAP = {
-  main
+  main,
+  myPurchases,
+  wishes
 }

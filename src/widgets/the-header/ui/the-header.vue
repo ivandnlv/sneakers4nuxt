@@ -5,7 +5,9 @@ import Container from '~/src/shared/ui/Container.vue'
 </script>
 
 <template>
-  <Container class=" flex w-full">
+  <Container class="flex w-full pb-8 border-b border-gray-200">
     <Logo />
+
+    <slot name="actions" />
   </Container>
 </template>
