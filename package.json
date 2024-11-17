@@ -18,13 +18,16 @@
     "vue-router": "latest"
   },
   "devDependencies": {
+    "@nuxt-alt/http": "^1.7.10",
     "@nuxtjs/eslint-config-typescript": "^12.1.0",
+    "@refactorjs/ofetch": "^1.1.1",
     "@types/node": "^22.9.0",
     "@typescript-eslint/eslint-plugin": "^8.14.0",
     "@typescript-eslint/parser": "^8.14.0",
     "eslint": "^8.57.1",
     "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-unused-imports": "^4.1.4",
-    "sass": "^1.81.0"
+    "sass": "^1.81.0",
+    "uuid": "^11.0.3"
   }
 }

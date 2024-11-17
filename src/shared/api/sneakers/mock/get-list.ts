@@ -1,0 +1,79 @@
+import type { SneakerMinDto } from '~/src/shared/api/sneakers/types'
+import { createMockEntityBase } from '~/src/shared/lib/mock/create-mock-entity-base'
+import type { SuccessResponse } from '~/src/shared/api/types/responses'
+import type { PaginationResponse } from '~/src/shared/api/types'
+
+const sneakersList: SneakerMinDto[] = [
+  {
+    ...createMockEntityBase('Мужские Кроссовки Nike Blazer Mid Suede'),
+    cover: 'https://i.imgur.com/F2oQHtU.jpeg',
+    price: 12999,
+    isFavorite: true,
+    isOnCart: false
+  },
+  {
+    ...createMockEntityBase('Мужские Кроссовки Nike Air Max 270'),
+    cover: 'https://i.imgur.com/c1LcxPe.jpeg',
+    price: 12999,
+    isFavorite: false,
+    isOnCart: false
+  },
+  {
+    ...createMockEntityBase('Мужские Кроссовки Nike Blazer Mid Suede'),
+    cover: 'https://i.imgur.com/Ae3BlAg.jpeg',
+    price: 8499,
+    isFavorite: false,
+    isOnCart: false
+  },
+  {
+    ...createMockEntityBase('Мужские Кроссовки Nike Kyrie 7'),
+    cover: 'https://i.imgur.com/8gzbG5B.jpeg',
+    price: 5299,
+    oldPrice: 11290,
+    isFavorite: false,
+    isOnCart: false
+  },
+  {
+    ...createMockEntityBase('Мужские Кроссовки Jordan Air Jordan 11'),
+    cover: 'https://i.imgur.com/LyF39Rn.jpeg',
+    price: 10799,
+    isFavorite: false,
+    isOnCart: false
+  },
+  {
+    ...createMockEntityBase('Мужские Кроссовки Nike Lebron XVIII Low'),
+    cover: 'https://i.imgur.com/mav3yrw.jpeg',
+    price: 13999,
+    isFavorite: false,
+    isOnCart: false
+  },
+  {
+    ...createMockEntityBase('Мужские Кроссовки Nike Blazer Mid Suede'),
+    cover: 'https://i.imgur.com/F2oQHtU.jpeg',
+    price: 8499,
+    isFavorite: false,
+    isOnCart: false
+  },
+  {
+    ...createMockEntityBase('Кроссовки Puma X Aka Boku Future Rider'),
+    cover: 'https://i.imgur.com/tJb9ESe.jpeg',
+    price: 8999,
+    isFavorite: false,
+    isOnCart: false
+  }
+]
+
+export const sneakersListMockResponse: SuccessResponse<PaginationResponse<SneakerMinDto>> = {
+  data: {
+    items: sneakersList,
+    pagination: {
+      currentPage: 1,
+      itemCount: sneakersList.length,
+      itemsPerPage: 9,
+      totalItems: sneakersList.length,
+      totalPages: 1
+    }
+  },
+  error: null,
+  code: 200
+}
