@@ -18,13 +18,9 @@ export const useSneakersStore = defineStore('sneakers', () => {
 
   const pending = computed(() => status.value === 'pending')
   async function fetchSneakers () {
-    try {
-      const { data } = await sneakersApi.getList(routeQuery.value)
+    const { data } = await sneakersApi.getList(routeQuery.value)
 
-      return data.items
-    } catch (e: unknown) {
-      console.log(e)
-    }
+    return data.items
   }
 
   return {

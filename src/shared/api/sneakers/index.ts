@@ -7,7 +7,7 @@ import type { PaginationResponse } from '~/src/shared/api/types'
 import { mockRequest } from '~/src/shared/lib/mock/mock-request'
 import { sneakerByIdMockRequest } from '~/src/shared/api/sneakers/mock/get-by-id'
 import { sneakersListMockResponse } from '~/src/shared/api/sneakers/mock/get-list'
-import { api } from '~/src/shared/api/instance'
+// import { api } from '~/src/shared/api/instance'
 import { brandsResponse } from '~/src/shared/api/sneakers/mock/get-brands'
 
 export namespace SneakersApiType {
@@ -26,9 +26,7 @@ export namespace SneakersApiType {
   }
 
   export namespace GetBrands {
-    export type Params = Partial<PaginationQuery>
-
-    export type Response = SuccessResponse<PaginationResponse<SneakerBrand>>
+    export type Response = SuccessResponse<SneakerBrand[]>
   }
 }
 
@@ -54,7 +52,7 @@ export const sneakersApi = {
     return sneakersListMockResponse
   },
 
-  async getBrands (_: SneakersApiType.GetBrands.Params) {
+  async getBrands () {
     // Real:
     // return await api.$get<SneakersApiType.GetBrands.Response>('/sneakers/brands', {
     //   query: params

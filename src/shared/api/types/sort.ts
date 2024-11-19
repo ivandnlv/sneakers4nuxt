@@ -6,7 +6,7 @@ export type SortRecord<T extends string = SortByEntityDates> = Record<T, SortDir
 export const sortDirRuOptions: { id: SortDirection, name: string }[] = [
   {
     id: 'asc',
-    name: 'По возростанию'
+    name: 'По возрастанию'
   },
   {
     id: 'desc',
