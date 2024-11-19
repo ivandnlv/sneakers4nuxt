@@ -8,6 +8,8 @@ export interface SneakerMinDto extends EntityBase {
   isOnCart: boolean
 }
 
+export type SneakerBrand = EntityBase
+
 export interface SneakerDto extends SneakerMinDto {
   sizes: {
     number: number
@@ -16,4 +18,5 @@ export interface SneakerDto extends SneakerMinDto {
   description: string
   photos: string[]
   modelName: string
+  brand: SneakerBrand
 }

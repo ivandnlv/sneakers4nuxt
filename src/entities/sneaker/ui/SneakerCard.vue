@@ -11,7 +11,7 @@ const oldPrice = computed(() => props.sneaker.oldPrice ? formatRUB(props.sneaker
 </script>
 
 <template>
-  <div class="flex w-[210px] h-[260px] flex-col rounded-2xl border p-3 border-gray-200">
+  <UCard class="flex w-[210px]  flex-col">
     <slot name="leading-feature" />
 
     <img class="w-full h-[112px] rounded-lg overflow-hidden object-contain" :src="sneaker.cover" alt="Обложка">
@@ -31,7 +31,7 @@ const oldPrice = computed(() => props.sneaker.oldPrice ? formatRUB(props.sneaker
 
       <slot name="trailing-feature" />
     </div>
-  </div>
+  </UCard>
 </template>
 
 <style lang="scss" scoped>
