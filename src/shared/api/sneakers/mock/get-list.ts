@@ -77,7 +77,7 @@ export const sneakersListMockResponse: SuccessResponse<PaginationResponse<Sneake
       currentPage: 1,
       itemCount: sneakersList.length,
       itemsPerPage: 9,
-      totalItems: sneakersList.length * 10,
+      totalItems: sneakersList.length * 2,
       totalPages: 1
     }
   },

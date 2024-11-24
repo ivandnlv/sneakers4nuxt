@@ -7,20 +7,30 @@ import BrandSelect from '~/src/entities/brand/ui/BrandSelect.vue'
 const router = useRouter()
 const route = useRoute()
 
-const filters: SneakersApiType.GetList.Params = reactive({
-  sortDirection: route.query?.sortDirection as SortDirection ?? 'asc',
-  withSale: route.query?.withSale ? route.query?.withSale === 'true' : false,
-  brands: route.query?.brands as string[] ?? []
-})
+const syncFilters = (): SneakersApiType.GetList.Params => {
+  return {
+    sortDirection: route.query?.sortDirection as SortDirection ?? 'asc',
+    withSale: route.query?.withSale ? route.query?.withSale === 'true' : false,
+    brands: route.query?.brands as string[] ?? []
+  }
+}
+
+const filters = ref<SneakersApiType.GetList.Params>(syncFilters())
 
 const replaceRouterByFilters = async () => {
   await router.replace({
     ...route,
-    query: filters as LocationQueryRaw
+    query: {
+      ...route.query,
+      ...filters.value as LocationQueryRaw
+    }
   })
 }
 
 watch(filters, replaceRouterByFilters, { deep: true })
+watch(() => route.query, () => {
+  filters.value = syncFilters()
+})
 </script>
 
 <template>
@@ -49,5 +59,7 @@ watch(filters, replaceRouterByFilters, { deep: true })
     </UFormGroup>
 
     <UCheckbox v-model="filters.withSale" label="Со скидкой" />
+
+    <slot name="trailing" />
   </UCard>
 </template>
