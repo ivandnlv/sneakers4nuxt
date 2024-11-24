@@ -6,7 +6,7 @@ import AuthRegisterButton from '~/src/features/auth/auth-register/ui/AuthRegiste
 </script>
 
 <template>
-  <Container class="flex flex-col bg-white rounded-[20px] p-8 ">
+  <Container class="layout-container flex flex-col bg-white p-8 ">
     <TheHeader>
       <template #actions>
         <div class="flex gap-4 ml-auto">
@@ -19,3 +19,9 @@ import AuthRegisterButton from '~/src/features/auth/auth-register/ui/AuthRegiste
     <slot />
   </Container>
 </template>
+
+<style lang="scss" scoped>
+.layout-container {
+  border-radius: 20px 20px 0 0;
+}
+</style>
