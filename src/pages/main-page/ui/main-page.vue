@@ -5,6 +5,7 @@ import SneakersFilter from '~/src/features/sneakers/sneakers-filter/ui/SneakersF
 import { useSneakersStore } from '~/src/entities/sneaker/model/store/sneakers-store'
 import SneakersSearch from '~/src/features/sneakers/sneakers-search/ui/SneakersSearch.vue'
 import SneakersFilterResetBtn from '~/src/features/sneakers/sneakers-filters-reset/ui/SneakersFilterResetBtn.vue'
+import MainPageSlider from '~/src/pages/main-page/ui/MainPageSlider.vue'
 
 const store = useSneakersStore()
 const { currentPage, total } = storeToRefs(store)
@@ -12,7 +13,9 @@ const { currentPage, total } = storeToRefs(store)
 
 <template>
   <Container class="mt-6">
-    <h1 class="text-xl font-semibold">
+    <MainPageSlider />
+
+    <h1 class="mt-6 text-xl font-semibold">
       Каталог кроссовок
     </h1>
     <div class="grid grid-cols-[1fr_320px] gap-6 mt-6">
@@ -21,14 +24,16 @@ const { currentPage, total } = storeToRefs(store)
         <UPagination v-model="currentPage" :total="total" />
       </div>
 
-      <div class="flex flex-col gap-4">
-        <SneakersSearch />
-        <SneakersFilter class="w-full">
-          <template #trailing>
-            <SneakersFilterResetBtn block />
-          </template>
-        </SneakersFilter>
-      </div>
+      <client-only>
+        <div class="flex flex-col gap-4">
+          <SneakersSearch />
+          <SneakersFilter class="w-full">
+            <template #trailing>
+              <SneakersFilterResetBtn block />
+            </template>
+          </SneakersFilter>
+        </div>
+      </client-only>
     </div>
   </Container>
 </template>
