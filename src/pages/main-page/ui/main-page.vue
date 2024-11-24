@@ -3,6 +3,8 @@ import Container from '~/src/shared/ui/Container.vue'
 import SneakersList from '~/src/pages/main-page/ui/SneakersSection/SneakersList.vue'
 import SneakersFilter from '~/src/features/sneakers/sneakers-filter/ui/SneakersFilter.vue'
 import { useSneakersStore } from '~/src/entities/sneaker/model/store/sneakers-store'
+import SneakersSearch from '~/src/features/sneakers/sneakers-search/ui/SneakersSearch.vue'
+import SneakersFilterResetBtn from '~/src/features/sneakers/sneakers-filters-reset/ui/SneakersFilterResetBtn.vue'
 
 const store = useSneakersStore()
 const { currentPage, total } = storeToRefs(store)
@@ -19,7 +21,14 @@ const { currentPage, total } = storeToRefs(store)
         <UPagination v-model="currentPage" :total="total" />
       </div>
 
-      <SneakersFilter class="w-full" />
+      <div class="flex flex-col gap-4">
+        <SneakersSearch />
+        <SneakersFilter class="w-full">
+          <template #trailing>
+            <SneakersFilterResetBtn block />
+          </template>
+        </SneakersFilter>
+      </div>
     </div>
   </Container>
 </template>
