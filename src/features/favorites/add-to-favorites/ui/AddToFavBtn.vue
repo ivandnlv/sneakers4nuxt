@@ -2,10 +2,10 @@
 import { HeroIcons } from '~/src/shared/types/icons/hero-icons'
 import { useTryCatchWithLoading } from '~/src/shared/lib/composables/use-try-catch-with-loading'
 import { sneakersApi } from '~/src/shared/api/sneakers'
-import type { SneakerMinDto } from '~/src/shared/api/sneakers/types'
+import type { SneakerDto, SneakerMinDto } from '~/src/shared/api/sneakers/types'
 
 const props = defineProps<{
-  sneaker: SneakerMinDto
+  sneaker: SneakerMinDto | SneakerDto
 }>()
 
 const isFavorite = ref(props.sneaker?.isFavorite ?? false)

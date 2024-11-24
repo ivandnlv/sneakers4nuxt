@@ -5,7 +5,7 @@ export interface SneakerMinDto extends EntityBase {
   price: number
   oldPrice?: number
   isFavorite: boolean
-  isOnCart: boolean
+  isInCart: boolean
 }
 
 export type SneakerBrand = EntityBase

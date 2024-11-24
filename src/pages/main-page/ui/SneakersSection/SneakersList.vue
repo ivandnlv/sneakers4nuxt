@@ -2,7 +2,8 @@
 import { useSneakersStore } from '~/src/entities/sneaker/model/store/sneakers-store'
 import SneakerCard from '~/src/entities/sneaker/ui/SneakerCard.vue'
 import SneakerCardLoader from '~/src/entities/sneaker/ui/SneakerCardLoader.vue'
-import AddToFavBtn from '~/src/features/sneakers/add-to-favorites/ui/AddToFavBtn.vue'
+import AddToFavBtn from '~/src/features/favorites/add-to-favorites/ui/AddToFavBtn.vue'
+import AddToCartBtn from '~/src/features/cart/add-to-cart/ui/AddToCartBtn.vue'
 
 const store = useSneakersStore()
 const { sneakersData, pending } = storeToRefs(store)
@@ -26,6 +27,10 @@ const { sneakersData, pending } = storeToRefs(store)
             class="absolute top-4 left-4"
             :sneaker="sneaker"
           />
+        </template>
+
+        <template #trailing-feature>
+          <AddToCartBtn class="self-start" :sneaker="sneaker" />
         </template>
       </SneakerCard>
     </template>
