@@ -9,6 +9,7 @@ import { sneakerByIdMockRequest } from '~/src/shared/api/sneakers/mock/get-by-id
 import { sneakersListMockResponse } from '~/src/shared/api/sneakers/mock/get-list'
 // import { api } from '~/src/shared/api/instance'
 import { brandsResponse } from '~/src/shared/api/sneakers/mock/get-brands'
+import { api } from '~/src/shared/api/instance'
 
 export namespace SneakersApiType {
   export namespace GetById {
@@ -61,5 +62,19 @@ export const sneakersApi = {
     // Mock:
     await mockRequest()
     return brandsResponse
+  },
+
+  async toggleFavorites (_: UUID) {
+    // await api.$patch(`/favorites/${id}`)
+
+    // Mock:
+    await mockRequest()
+  },
+
+  async toggleCart (_: UUID) {
+    // await api.$patch(`/cart/${id}`)
+
+    // Mock:
+    await mockRequest()
   }
 }

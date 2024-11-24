@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import Container from '~/src/shared/ui/Container.vue'
 import SneakersList from '~/src/pages/main-page/ui/SneakersSection/SneakersList.vue'
-import SneakersFilter from '~/src/features/sneakers/sneakers-filter/ui/SneakersFilter.vue'
+import SneakersFilter from '~/src/features/sneakers/filter/ui/SneakersFilter.vue'
 import { useSneakersStore } from '~/src/entities/sneaker/model/store/sneakers-store'
-import SneakersSearch from '~/src/features/sneakers/sneakers-search/ui/SneakersSearch.vue'
-import SneakersFilterResetBtn from '~/src/features/sneakers/sneakers-filters-reset/ui/SneakersFilterResetBtn.vue'
+import SneakersSearch from '~/src/features/sneakers/search/ui/SneakersSearch.vue'
+import SneakersFilterResetBtn from '~/src/features/sneakers/filters-reset/ui/SneakersFilterResetBtn.vue'
 import MainPageSlider from '~/src/pages/main-page/ui/MainPageSlider.vue'
 
 const store = useSneakersStore()

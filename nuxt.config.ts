@@ -13,5 +13,9 @@ export default defineNuxtConfig({
 
   components: false,
 
-  pages: true
+  pages: true,
+
+  colorMode: {
+    preference: 'light'
+  }
 })
