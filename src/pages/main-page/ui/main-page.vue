@@ -13,7 +13,9 @@ const { currentPage, total } = storeToRefs(store)
 
 <template>
   <Container class="mt-6">
-    <MainPageSlider />
+    <client-only>
+      <MainPageSlider />
+    </client-only>
 
     <h1 class="mt-6 text-xl font-semibold">
       Каталог кроссовок
