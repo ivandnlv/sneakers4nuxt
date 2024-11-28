@@ -4,6 +4,8 @@ import { useSneakerIdStore } from '~/src/entities/sneaker/model/store/sneaker-id
 import SneakerSlider from '~/src/entities/sneaker/ui/SneakerSlider.vue'
 import SneakerInfo from '~/src/entities/sneaker/ui/SneakerInfo.vue'
 import AddToCartBtn from '~/src/features/cart/add-to-cart/ui/AddToCartBtn.vue'
+import SneakerIdPageLoader from '~/src/pages/sneaker-id/SneakerIdPageLoader.vue'
+import { HeroIcons } from '~/src/shared/types/icons/hero-icons'
 
 const route = useRoute()
 const id = route.params.id as UUID
@@ -13,12 +15,21 @@ const { data: sneakerData, pending } = storeToRefs(store)
 </script>
 
 <template>
-  <span v-if="!sneakerData || pending">Loading..</span>
+  <SneakerIdPageLoader v-if="!sneakerData || pending" />
 
   <div v-else-if="sneakerData" class="flex flex-col mt-6">
-    <h1 class="text-3xl font-semibold">
-      {{ sneakerData.modelName }}
-    </h1>
+    <div class="flex gap-3 items-center">
+      <UButton
+        color="gray"
+        size="xl"
+        :icon="HeroIcons.ARROW_SMALL_LEFT"
+        @click="$router.back()"
+      />
+
+      <h1 class="text-3xl font-semibold">
+        {{ sneakerData.modelName }}
+      </h1>
+    </div>
 
     <div class="grid grid-cols-2 gap-8 mt-4 rounded-[20px] p-5">
       <client-only>
