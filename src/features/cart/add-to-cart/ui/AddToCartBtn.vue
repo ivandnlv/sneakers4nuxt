@@ -8,6 +8,7 @@ import { sneakersApi } from '~/src/shared/api/sneakers'
 
 const props = withDefaults(defineProps<{
   sneaker: SneakerDto | SneakerMinDto
+  initialValue?: boolean
   withIcon?: boolean
   withTitle?: boolean
   size?: ButtonSize
@@ -17,10 +18,22 @@ const props = withDefaults(defineProps<{
   size: 'xl'
 })
 
-const isInCart = ref(props.sneaker?.isInCart)
+const isInCart = ref(props?.initialValue ?? props.sneaker?.isInCart)
+
+const emit = defineEmits<{
+  (e: 'added', sneaker: SneakerMinDto): void
+  (e: 'removed', sneaker: SneakerMinDto): void
+}>()
 
 const { runWithLoading, isLoading } = useTryCatchWithLoading(async () => {
   await sneakersApi.toggleCart(props.sneaker.id)
+
+  if (isInCart.value) {
+    emit('removed', props.sneaker)
+  } else {
+    emit('added', props.sneaker)
+  }
+
   isInCart.value = !isInCart.value
 })
 

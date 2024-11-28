@@ -4,9 +4,12 @@ import SneakerCard from '~/src/entities/sneaker/ui/SneakerCard.vue'
 import SneakerCardLoader from '~/src/entities/sneaker/ui/SneakerCardLoader.vue'
 import AddToFavBtn from '~/src/features/favorites/add-to-favorites/ui/AddToFavBtn.vue'
 import AddToCartBtn from '~/src/features/cart/add-to-cart/ui/AddToCartBtn.vue'
+import { useCartStore } from '~/src/widgets/cart/model/store/cart-store'
 
 const store = useSneakersStore()
 const { sneakersData, pending } = storeToRefs(store)
+const cartStore = useCartStore()
+const { cart } = storeToRefs(cartStore)
 </script>
 
 <template>
@@ -19,7 +22,7 @@ const { sneakersData, pending } = storeToRefs(store)
       <SneakerCard
         v-for="(sneaker, i) in sneakersData"
         :key="i"
-        class="relative"
+        class="relative w-[210px]"
         :sneaker="sneaker"
       >
         <template #leading-feature>
@@ -30,7 +33,13 @@ const { sneakersData, pending } = storeToRefs(store)
         </template>
 
         <template #trailing-feature>
-          <AddToCartBtn class="self-start" :sneaker="sneaker" />
+          <AddToCartBtn
+            class="self-start"
+            :sneaker="sneaker"
+            :initial-value="!!cart.find(item => item.id === sneaker.id)"
+            @added="cartStore.addToCart"
+            @removed="cartStore.removeFromCart"
+          />
         </template>
       </SneakerCard>
     </template>
