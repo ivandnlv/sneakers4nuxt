@@ -3,5 +3,9 @@ export enum HeroIcons {
   X_MARK_16_SOLID = 'i-heroicons-x-mark-16-solid',
   HEART_SOLID = 'i-heroicons-heart-solid',
   PLUS = 'i-heroicons-plus',
-  CHECK = 'i-heroicons-check'
+  CHECK = 'i-heroicons-check',
+  ARROW_UP = 'i-heroicons-arrow-up',
+  ARROW_DOWN = 'i-heroicons-arrow-down',
+  ARROW_LEFT = 'i-heroicons-arrow-left',
+  ARROW_RIGHT = 'i-heroicons-arrow-right'
 }
