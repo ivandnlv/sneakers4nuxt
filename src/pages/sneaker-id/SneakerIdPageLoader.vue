@@ -1,6 +1,15 @@
 <template>
   <div class="flex flex-col w-full mt-6">
-    <USkeleton class="h-9 w-[40%]" />
+    <div class="flex gap-3 items-center">
+      <UButton
+        color="gray"
+        size="xl"
+        :icon="HeroIcons.ARROW_SMALL_LEFT"
+        @click="$router.back()"
+      />
+
+      <USkeleton class="h-9 w-[40%]" />
+    </div>
 
     <div class="grid grid-cols-2 gap-8 mt-4 p-5">
       <div class="flex flex-col gap-6 w-full">
@@ -19,3 +28,6 @@
     </div>
   </div>
 </template>
+<script setup lang="ts">
+import { HeroIcons } from '~/src/shared/types/icons/hero-icons'
+</script>
