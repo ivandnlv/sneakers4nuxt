@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import type { SneakerMinDto } from '~/src/shared/api/sneakers/types'
 import { formatRUB } from '~/src/shared/lib/format/number/format-price'
+import { SITEMAP } from '~/src/shared/router/sitemap'
 
 const props = defineProps<{
   sneaker: SneakerMinDto
@@ -15,7 +16,17 @@ const oldPrice = computed(() => props.sneaker.oldPrice ? formatRUB(props.sneaker
     <slot name="leading-feature" />
 
     <img class="w-full h-[112px] rounded-lg overflow-hidden object-contain" :src="sneaker.cover" alt="Обложка">
-    <span class="sneaker-card__name my-4">{{ sneaker.name }}</span>
+    <nuxt-link
+      class="sneaker-card__name my-4 hover:text-primary-500"
+      :to="{
+        ...SITEMAP.sneakerDetail.route,
+        params: {
+          id: sneaker.id
+        }
+      }"
+    >
+      {{ sneaker.name }}
+    </nuxt-link>
     <div class="flex justify-between gap-6">
       <div class="flex flex-col">
         <span class="flex gap-2 items-center text-gray-400">ЦЕНА: <b v-if="oldPrice" class="sneaker-card__old-price text-xs">{{ oldPrice }}</b></span>

@@ -23,5 +23,6 @@ import AuthRegisterButton from '~/src/features/auth/auth-register/ui/AuthRegiste
 <style lang="scss" scoped>
 .layout-container {
   border-radius: 20px 20px 0 0;
+  min-height: calc(100dvh - 90px);
 }
 </style>

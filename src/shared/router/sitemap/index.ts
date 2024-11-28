@@ -22,8 +22,16 @@ const wishes: SitemapRoute = {
   }
 }
 
+const sneakerDetail: SitemapRoute = {
+  name: 'Детальная кроссовка',
+  route: {
+    name: AppRoutes.sneakerId
+  }
+}
+
 export const SITEMAP = {
   main,
   myPurchases,
-  wishes
+  wishes,
+  sneakerDetail
 }

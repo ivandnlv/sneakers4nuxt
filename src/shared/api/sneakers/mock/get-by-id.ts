@@ -34,7 +34,9 @@ const sneakerMock: SneakerDto = {
   brand: {
     id: generateUUID(),
     name: 'nike'
-  }
+  },
+  description: 'Nike Blazer Mid Suede - это классическая модель известного бренда Nike, которая сочетает в себе стильный дизайн и высокое качество.\n' +
+    'Эти кроссовки изготовлены из высококачественного замшевого материала, что придает им элегантный вид. Благодаря своей универсальности, эта модель подойдет как для повседневной носки, так и для спортивных тренировок.'
 }
 
 export const sneakerByIdMockRequest: SuccessResponse<SneakerDto> = {
