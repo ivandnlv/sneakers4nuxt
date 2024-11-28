@@ -3,7 +3,8 @@ import type { RouteLocationNamedRaw } from '#vue-router'
 export const enum AppRoutes {
     index = 'index',
     myPurchases = 'my-purchases',
-    wishes = 'wishes'
+    wishes = 'wishes',
+    sneakerId = 'sneaker-id'
 }
 
 export interface AppRoute extends RouteLocationNamedRaw {
