@@ -3,6 +3,7 @@ import type { UUID } from 'node:crypto'
 import { useSneakerIdStore } from '~/src/entities/sneaker/model/store/sneaker-id-store'
 import SneakerSlider from '~/src/entities/sneaker/ui/SneakerSlider.vue'
 import SneakerInfo from '~/src/entities/sneaker/ui/SneakerInfo.vue'
+import AddToCartBtn from '~/src/features/cart/add-to-cart/ui/AddToCartBtn.vue'
 
 const route = useRoute()
 const id = route.params.id as UUID
@@ -20,9 +21,21 @@ const { data: sneakerData, pending } = storeToRefs(store)
     </h1>
 
     <div class="grid grid-cols-2 gap-8 mt-4 rounded-[20px] p-5">
-      <SneakerSlider :sneaker="sneakerData" />
+      <client-only>
+        <SneakerSlider :sneaker="sneakerData" />
+      </client-only>
 
-      <SneakerInfo class="items-end" :sneaker="sneakerData" />
+      <SneakerInfo :sneaker="sneakerData">
+        <template #feature>
+          <AddToCartBtn
+            class="mt-6"
+            block
+            :sneaker="sneakerData"
+            with-title
+            :with-icon="false"
+          />
+        </template>
+      </SneakerInfo>
     </div>
   </div>
 </template>

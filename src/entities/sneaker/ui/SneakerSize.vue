@@ -7,12 +7,12 @@ defineProps<{
 </script>
 
 <template>
-  <div
-    class="cursor-pointer hover:border-primary-500 rounded-xl p-3 text-xl border border-gray-200"
+  <button
+    class="w-12 h-12 flex flex-col justify-center items-center cursor-pointer hover:border-primary-500 rounded-xl text-xl border border-gray-200"
     :class="{
-      'select-none opacity-50': !size.isAvailable
+      'select-none bg-gray-200 hover:border-gray-200': !size.isAvailable
     }"
   >
     {{ size.number }}
-  </div>
+  </button>
 </template>
