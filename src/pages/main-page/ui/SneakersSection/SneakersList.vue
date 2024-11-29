@@ -16,7 +16,7 @@ const favoritesStore = useFavoritesStore()
 </script>
 
 <template>
-  <div class="flex flex-grow gap-4 flex-wrap">
+  <div class="grid grid-cols-4 gap-6">
     <template v-if="pending">
       <SneakerCardLoader v-for="i in 9" :key="i" />
     </template>
@@ -25,7 +25,7 @@ const favoritesStore = useFavoritesStore()
       <SneakerCard
         v-for="(sneaker, i) in sneakersData"
         :key="i"
-        class="relative w-[210px]"
+        class="relative w-full"
         :sneaker="sneaker"
       >
         <template #leading-feature>
