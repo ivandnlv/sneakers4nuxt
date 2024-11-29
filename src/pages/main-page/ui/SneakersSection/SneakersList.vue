@@ -16,7 +16,7 @@ const favoritesStore = useFavoritesStore()
 </script>
 
 <template>
-  <div class="grid grid-cols-4 gap-6">
+  <div class="grid md:grid-cols-3  lg:grid-cols-4 gap-6">
     <template v-if="pending">
       <SneakerCardLoader v-for="i in 9" :key="i" />
     </template>
