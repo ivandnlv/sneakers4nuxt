@@ -4,7 +4,11 @@ import { mockRequest } from '~/src/shared/lib/mock/mock-request'
 const URL = '/cart'
 
 export namespace CartApi {
-
+  export namespace CreateOrder {
+    export interface Body {
+     sneakerIds: UUID[]
+    }
+  }
 }
 
 export const cartApi = {
@@ -15,5 +19,11 @@ export const cartApi = {
 
   async deleteFromCart (_: UUID) {
     // await api.$delete(`${URL}/${id}`)
+    await mockRequest()
+  },
+
+  async createOrder (_: CartApi.CreateOrder.Body) {
+    // await api.$post(`${URL}`, body)
+    await mockRequest()
   }
 }

@@ -11,9 +11,14 @@ export const useCartStore = defineStore('cart-store', () => {
     cart.value = cart.value.filter(item => item.id !== sneaker.id)
   }
 
+  const createOrder = () => {
+    cart.value = []
+  }
+
   return {
     cart,
     addToCart,
-    removeFromCart
+    removeFromCart,
+    createOrder
   }
 })
