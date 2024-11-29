@@ -5,6 +5,7 @@ import { HeroIcons } from '~/src/shared/types/icons/hero-icons'
 import type { SneakerDto, SneakerMinDto } from '~/src/shared/api/sneakers/types'
 import { useTryCatchWithLoading } from '~/src/shared/lib/composables/use-try-catch-with-loading'
 import { sneakersApi } from '~/src/shared/api/sneakers'
+import { cartApi } from '~/src/shared/api/cart'
 
 const props = withDefaults(defineProps<{
   sneaker: SneakerDto | SneakerMinDto
@@ -20,13 +21,17 @@ const props = withDefaults(defineProps<{
 
 const isInCart = ref(props?.initialValue ?? props.sneaker?.isInCart)
 
+watch(() => props.initialValue, () => {
+  isInCart.value = props.initialValue
+})
+
 const emit = defineEmits<{
   (e: 'added', sneaker: SneakerMinDto): void
   (e: 'removed', sneaker: SneakerMinDto): void
 }>()
 
 const { runWithLoading, isLoading } = useTryCatchWithLoading(async () => {
-  await sneakersApi.toggleCart(props.sneaker.id)
+  await cartApi.toggleCart(props.sneaker.id)
 
   if (isInCart.value) {
     emit('removed', props.sneaker)
