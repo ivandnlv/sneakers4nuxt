@@ -6,13 +6,29 @@ import type { SneakerDto, SneakerMinDto } from '~/src/shared/api/sneakers/types'
 import { favoritesApi } from '~/src/shared/api/favorites'
 
 const props = defineProps<{
+  initialValue?: boolean
   sneaker: SneakerMinDto | SneakerDto
 }>()
 
-const isFavorite = ref(props.sneaker?.isFavorite ?? false)
+const emit = defineEmits<{
+  (e: 'added', sneaker: SneakerMinDto): void
+  (e: 'removed', sneaker: SneakerMinDto): void
+}>()
+
+const isFavorite = ref(props?.initialValue ?? false)
+
+watch(() => props.initialValue, () => {
+  isFavorite.value = props.initialValue
+})
 
 const { runWithLoading, isLoading } = useTryCatchWithLoading(async () => {
   await favoritesApi.toggleFavorites(props.sneaker.id)
+
+  if (isFavorite.value) {
+    emit('removed', props.sneaker)
+  } else {
+    emit('added', props.sneaker)
+  }
 
   isFavorite.value = !isFavorite.value
 })

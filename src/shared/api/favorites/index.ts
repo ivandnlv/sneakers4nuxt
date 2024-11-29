@@ -1,7 +1,7 @@
 import type { UUID } from 'node:crypto'
 import { mockRequest } from '~/src/shared/lib/mock/mock-request'
 
-const URL = '/favorites'
+const URL = '/wishes'
 
 export const favoritesApi = {
   async toggleFavorites (_: UUID) {

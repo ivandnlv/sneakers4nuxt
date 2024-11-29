@@ -5,11 +5,14 @@ import SneakerCardLoader from '~/src/entities/sneaker/ui/SneakerCardLoader.vue'
 import AddToFavBtn from '~/src/features/favorites/add-to-favorites/ui/AddToFavBtn.vue'
 import AddToCartBtn from '~/src/features/cart/add-to-cart/ui/AddToCartBtn.vue'
 import { useCartStore } from '~/src/widgets/cart/model/store/cart-store'
+import { useFavoritesStore } from '~/src/entities/favorites/model/store/favorites-store'
 
 const store = useSneakersStore()
 const { sneakersData, pending } = storeToRefs(store)
 const cartStore = useCartStore()
 const { cart } = storeToRefs(cartStore)
+
+const favoritesStore = useFavoritesStore()
 </script>
 
 <template>
@@ -29,6 +32,9 @@ const { cart } = storeToRefs(cartStore)
           <AddToFavBtn
             class="absolute top-4 left-4"
             :sneaker="sneaker"
+            :initial-value="!!favoritesStore.favorites.find(item => item.id === sneaker.id)"
+            @added="favoritesStore.addToFavorites"
+            @removed="favoritesStore.removeFromFavorites"
           />
         </template>
 
