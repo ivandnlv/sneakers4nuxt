@@ -3,42 +3,16 @@ import type { SneakerMinDto } from '~/src/shared/api/sneakers/types'
 import { formatRUB } from '~/src/shared/lib/format/number/format-price'
 import { SITEMAP } from '~/src/shared/router/sitemap'
 
-const props = withDefaults(defineProps<{
+const props = defineProps<{
   sneaker: SneakerMinDto
-  direction?: 'horizontal' | 'vertical'
-}>(), {
-  direction: 'vertical'
-})
+}>()
 
 const price = computed(() => formatRUB(props.sneaker.price))
 const oldPrice = computed(() => props.sneaker.oldPrice ? formatRUB(props.sneaker.oldPrice) : '')
-
-const isVertical = computed(() => props.direction === 'vertical')
-const isHorizontal = computed(() => props.direction === 'horizontal')
-
-const bodyClasses = computed(() => {
-  const classes = ['flex']
-
-  if (isHorizontal.value) {
-    classes.push('flex-row', 'items-center', 'gap-3')
-  }
-
-  if (isVertical.value) {
-    classes.push('flex-col')
-  }
-
-  return classes.join(' ')
-})
 </script>
 
 <template>
-  <UCard
-    :ui="{
-      body: {
-        base: bodyClasses
-      }
-    }"
-  >
+  <UCard class="flex w-[210px]  flex-col">
     <slot name="leading-feature" />
 
     <img class="w-full h-[112px] rounded-lg overflow-hidden object-contain" :src="sneaker.cover" alt="Обложка">
@@ -54,12 +28,7 @@ const bodyClasses = computed(() => {
       {{ sneaker.name }}
     </nuxt-link>
     <div class="flex justify-between gap-6">
-      <div
-        class="flex flex-col"
-        :class="{
-          'items-center': isHorizontal
-        }"
-      >
+      <div class="flex flex-col">
         <span class="flex gap-2 items-center text-gray-400">ЦЕНА: <b v-if="oldPrice" class="sneaker-card__old-price text-xs">{{ oldPrice }}</b></span>
         <span
           class="font-semibold"
