@@ -8,6 +8,5 @@ export enum HeroIcons {
   ARROW_DOWN = 'i-heroicons-arrow-down',
   ARROW_LEFT = 'i-heroicons-arrow-left',
   ARROW_RIGHT = 'i-heroicons-arrow-right',
-  ARROW_SMALL_LEFT = 'i-heroicons-arrow-small-left',
-  SHOPPING_CART_SOLID = 'i-heroicons-shopping-cart-solid'
+  ARROW_SMALL_LEFT = 'i-heroicons-arrow-small-left'
 }
