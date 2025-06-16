@@ -5,5 +5,9 @@ import './styles/index.scss'
 <template>
   <NuxtLayout>
     <NuxtPage />
+
+    <client-only>
+      <UModals />
+    </client-only>
   </NuxtLayout>
 </template>

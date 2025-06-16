@@ -18,22 +18,22 @@ const { currentPage, total } = storeToRefs(store)
     <h1 class="mt-6 text-xl font-semibold">
       Каталог кроссовок
     </h1>
-    <div class="grid grid-cols-[1fr_320px] gap-6 mt-6">
+    <div class="flex gap-6 mt-6">
       <div class="flex flex-col gap-4">
         <SneakersList />
-        <UPagination v-model="currentPage" :total="total" />
+        <!--        <UPagination v-model="currentPage" :total="total" />-->
       </div>
 
-      <client-only>
-        <div class="flex flex-col gap-4">
-          <SneakersSearch />
-          <SneakersFilter class="w-full">
-            <template #trailing>
-              <SneakersFilterResetBtn block />
-            </template>
-          </SneakersFilter>
-        </div>
-      </client-only>
+      <!--      <client-only>-->
+      <!--        <div class="flex flex-col gap-4">-->
+      <!--          <SneakersSearch />-->
+      <!--          <SneakersFilter class="w-full">-->
+      <!--            <template #trailing>-->
+      <!--              <SneakersFilterResetBtn block />-->
+      <!--            </template>-->
+      <!--          </SneakersFilter>-->
+      <!--        </div>-->
+      <!--      </client-only>-->
     </div>
   </Container>
 </template>
