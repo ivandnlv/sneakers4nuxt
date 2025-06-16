@@ -60,13 +60,6 @@ const sneakersList: SneakerMinDto[] = [
     price: 8499,
     isFavorite: false,
     isInCart: false
-  },
-  {
-    ...createMockEntityBase('Кроссовки Puma X Aka Boku Future Rider'),
-    cover: 'https://i.imgur.com/tJb9ESe.jpeg',
-    price: 8999,
-    isFavorite: false,
-    isInCart: false
   }
 ]
 

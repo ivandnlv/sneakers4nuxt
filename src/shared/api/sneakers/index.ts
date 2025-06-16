@@ -62,19 +62,5 @@ export const sneakersApi = {
     // Mock:
     await mockRequest()
     return brandsResponse
-  },
-
-  async toggleFavorites (_: UUID) {
-    // await api.$patch(`/favorites/${id}`)
-
-    // Mock:
-    await mockRequest()
-  },
-
-  async toggleCart (_: UUID) {
-    // await api.$patch(`/cart/${id}`)
-
-    // Mock:
-    await mockRequest()
   }
 }
