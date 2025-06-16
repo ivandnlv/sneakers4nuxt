@@ -23,24 +23,30 @@ const { prev, next } = useSwiper(swiperInstanceRef)
 </script>
 
 <template>
-  <div class="relative">
-    <swiper-container
-      ref="swiperInstanceRef"
-      loop
-      class="!rounded-[20px] overflow-hidden relative"
-    >
-      <swiper-slide
-        v-for="(item, i) in slidesImages"
-        :key="i"
+  <ClientOnly>
+    <div class="relative">
+      <swiper-container
+        ref="swiperInstanceRef"
+        loop
+        class="!rounded-[20px] overflow-hidden relative"
       >
-        <img :src="item" :alt="item" class="w-full" draggable="false">
-      </swiper-slide>
-    </swiper-container>
+        <swiper-slide
+          v-for="(item, i) in slidesImages"
+          :key="i"
+        >
+          <img :src="item" :alt="item" class="w-full" draggable="false">
+        </swiper-slide>
+      </swiper-container>
 
-    <SwiperButtons
-      class="z-10 w-[102%]"
-      @prev="prev"
-      @next="next"
-    />
-  </div>
+      <SwiperButtons
+        class="z-10 w-[102%]"
+        @prev="prev"
+        @next="next"
+      />
+    </div>
+
+    <template #fallback>
+      <USkeleton class="w-full rounded-[20px] h-[317px]" />
+    </template>
+  </ClientOnly>
 </template>
