@@ -7,6 +7,8 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   modules: ['@nuxt/ui', '@pinia/nuxt', '@nuxt-alt/http', '@vueuse/nuxt', 'nuxt-swiper'],
 
+  css: ['~/assets/css/main.css'],
+
   plugins: [
     '~/plugins/http'
   ],
@@ -15,7 +17,9 @@ export default defineNuxtConfig({
 
   pages: true,
 
-  colorMode: {
-    preference: 'light'
-  }
+  ui: {
+    colorMode: false
+  },
+
+  ssr: false
 })
