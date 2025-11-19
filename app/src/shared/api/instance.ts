@@ -13,8 +13,10 @@ export function initializeApi () {
     return api
   }
 
+  const config = useRuntimeConfig()
+
   apiInstance = $http.create({
-    baseURL: `${process.server ? useRuntimeConfig().public.apiUrl : ''}/api`
+    baseURL: `${import.meta.server ? config.public.apiBase : ''}/api`
   })
 
   apiInstance.onResponseError(throwApiError)
