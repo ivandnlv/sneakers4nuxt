@@ -9,7 +9,7 @@ body {
     width: 100%;
     min-height: 100dvh;
     overflow-x: hidden;
-    background: var(--main-color);
+    background: var(--ui-primary);
     font-family: 'Inter';
 }
 

@@ -1,15 +1,20 @@
-:root {
-    --main-color: #9DD458;
+@import 'tailwindcss';
+@import '@nuxt/ui';
 
-    --color-primary-50: 242 252 237 !important;
-    --color-primary-100: 222 244 209 !important;
-    --color-primary-200: 202 237 181 !important;
-    --color-primary-300: 182 229 153 !important;
-    --color-primary-400: 161 220 124 !important;
-    --color-primary-500: 129 191 49 !important;
-    --color-primary-600: 116 172 44 !important;
-    --color-primary-700: 92 137 35 !important;
-    --color-primary-800: 69 103 26 !important;
-    --color-primary-900: 46 69 17 !important;
-    --color-primary-950: 28 41 10 !important;
+@theme static {
+    --color-primary-50: #F2FCED;
+    --color-primary-100: #DEF4D1;
+    --color-primary-200: #CAEDB5;
+    --color-primary-300: #B6E599;
+    --color-primary-400: #A1DC7C;
+    --color-primary-500: #81BF31;
+    --color-primary-600: #74AC2C;
+    --color-primary-700: #5C8923;
+    --color-primary-800: #45671A;
+    --color-primary-900: #2E4511;
+    --color-primary-950: #1C290A;
+}
+
+:root {
+    --ui-primary: var(--color-primary-500);
 }
