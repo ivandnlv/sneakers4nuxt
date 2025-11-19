@@ -38,11 +38,12 @@ const { runWithLoading, isLoading } = useTryCatchWithLoading(async () => {
   <UButton
     size="xl"
     :icon="HeroIcons.HEART_SOLID"
-    color="neutral"
+    color="gray"
     variant="ghost"
+    class="transition-colors"
     :class="{
       'text-red-400': isFavorite,
-      'text-gray-300': !isFavorite
+      'text-gray-300 hover:text-red-400': !isFavorite
     }"
     :loading="isLoading"
     @click="runWithLoading"

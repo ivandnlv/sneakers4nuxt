@@ -62,7 +62,7 @@ const title = computed(() => {
 <template>
   <UButton
     :size="size"
-    :color="isInCart ? 'primary' : 'neutral'"
+    :color="isInCart ? 'primary' : 'gray'"
     :icon="icon"
     :loading="isLoading"
     @click="runWithLoading"

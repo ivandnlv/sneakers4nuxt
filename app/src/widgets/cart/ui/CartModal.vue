@@ -22,14 +22,14 @@ const onOrdered = (sneakers: SneakerMinDto[]) => {
   <UModal
     title="Корзина"
     :ui="{
-      content: 'p-6'
+      content: 'p-6 divide-none flex flex-col gap-6'
     }"
   >
     <template #content>
       <span class="text-xl">Корзина</span>
 
-      <div v-if="cart.length" class="flex flex-col">
-        <div class="flex flex-col gap-3 mt-6 max-h-[90vh] overflow-y-auto">
+      <template v-if="cart.length">
+        <div class="flex flex-col gap-3 max-h-[90vh] overflow-y-auto">
           <SneakerCard
             v-for="(sneaker, i) in cart"
             :key="i"
@@ -39,7 +39,8 @@ const onOrdered = (sneakers: SneakerMinDto[]) => {
           >
             <template #leading-feature>
               <RemoveFromCartBtn
-                color="neutral"
+                color="gray"
+                variant="ghost"
                 class="absolute left-6 top-6"
                 :sneaker="sneaker"
                 @removed="store.removeFromCart"
@@ -54,7 +55,7 @@ const onOrdered = (sneakers: SneakerMinDto[]) => {
           :sneakers="cart"
           @ordered="onOrdered"
         />
-      </div>
+      </template>
 
       <Empty v-else class="mt-6 text-center py-12" />
     </template>

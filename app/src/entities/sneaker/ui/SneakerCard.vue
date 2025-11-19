@@ -34,9 +34,7 @@ const bodyClasses = computed(() => {
 <template>
   <UCard
     :ui="{
-      body: {
-        base: bodyClasses
-      }
+      body: bodyClasses
     }"
   >
     <slot name="leading-feature" />

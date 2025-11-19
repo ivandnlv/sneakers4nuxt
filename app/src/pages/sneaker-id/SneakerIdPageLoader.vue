@@ -2,7 +2,7 @@
   <div class="flex flex-col w-full mt-6">
     <div class="flex gap-3 items-center">
       <UButton
-        color="neutral"
+        color="gray"
         size="xl"
         :icon="HeroIcons.ARROW_SMALL_LEFT"
         @click="$router.back()"

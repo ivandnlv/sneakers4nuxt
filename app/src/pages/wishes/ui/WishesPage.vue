@@ -18,7 +18,7 @@ const { favorites } = storeToRefs(store)
     >
       <template #leading-feature>
         <RemoveFromFavsBtn
-          color="neutral"
+          color="gray"
           class="absolute"
           :sneaker="sneaker"
           @removed="store.removeFromFavorites"

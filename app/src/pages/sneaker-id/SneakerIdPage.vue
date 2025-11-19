@@ -20,7 +20,7 @@ const { data: sneakerData, pending } = storeToRefs(store)
   <div v-else-if="sneakerData" class="flex flex-col mt-6">
     <div class="flex gap-3 items-center">
       <UButton
-        color="neutral"
+        color="gray"
         size="xl"
         :icon="HeroIcons.ARROW_SMALL_LEFT"
         @click="$router.back()"

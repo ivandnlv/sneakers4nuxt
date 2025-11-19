@@ -2,7 +2,7 @@
   <UButton
     class="p-0"
     size="sm"
-    color="neutral"
+    color="gray"
     variant="link"
     :icon="HeroIcons.X_MARK_16_SOLID"
   />

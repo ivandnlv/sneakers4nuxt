@@ -26,7 +26,7 @@ const openCartModal = () => {
 
     <UButton
       class="w-6 h-6 hover:text-primary-600"
-      color="neutral"
+      color="gray"
       size="xl"
       variant="ghost"
       :icon="HeroIcons.SHOPPING_CART_SOLID"

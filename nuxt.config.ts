@@ -18,7 +18,10 @@ export default defineNuxtConfig({
   pages: true,
 
   ui: {
-    colorMode: false
+    colorMode: false,
+    theme: {
+      colors: ['gray']
+    }
   },
 
   ssr: false
