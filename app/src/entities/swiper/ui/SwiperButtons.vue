@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ButtonSize } from '#ui/types'
-import ArrowButton from '~/src/shared/ui/ArrowButton.vue'
+import UiArrowButton from '~/src/shared/ui/UiArrowButton.vue'
 
 withDefaults(
   defineProps<{
@@ -33,7 +33,7 @@ const emit = defineEmits<{
       'flex-col': direction === 'vertical'
     }"
   >
-    <arrow-button
+    <ui-arrow-button
       :direction="direction"
       :class="{
         'opacity-0': !showPrev,
@@ -43,7 +43,7 @@ const emit = defineEmits<{
       :size="size"
       @click="emit('prev')"
     />
-    <arrow-button
+    <ui-arrow-button
       :direction="direction"
       :class="{
         'opacity-0': !showNext,
@@ -55,7 +55,7 @@ const emit = defineEmits<{
     />
   </div>
   <template v-else>
-    <arrow-button
+    <ui-arrow-button
       class="absolute -top-3.5 left-[50%] -translate-x-[50%] z-50"
       :direction="direction"
       :class="{
@@ -66,7 +66,7 @@ const emit = defineEmits<{
       :size="size"
       @click="emit('prev')"
     />
-    <arrow-button
+    <ui-arrow-button
       class="absolute -bottom-3.5 left-[50%] -translate-x-[50%] z-50"
       :direction="direction"
       :class="{

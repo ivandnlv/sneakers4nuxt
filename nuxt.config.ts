@@ -28,7 +28,8 @@ export default defineNuxtConfig({
 
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE
+      apiBase: process.env.NUXT_PUBLIC_API_BASE,
+      s3Base: process.env.NUXT_PUBLIC_S3
     }
   }
 })

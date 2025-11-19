@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useCartStore } from '~/src/widgets/cart/model/store/cart-store'
 import SneakerCard from '~/src/entities/sneaker/ui/SneakerCard.vue'
-import Empty from '~/src/shared/ui/Empty.vue'
+import UiEmpty from '~/src/shared/ui/UiEmpty.vue'
 import RemoveFromCartBtn from '~/src/features/cart/remove-from-cart/ui/RemoveFromCartBtn.vue'
 import CreateOrderBtn from '~/src/features/cart/order/ui/CreateOrderBtn.vue'
 import type { SneakerMinDto } from '~/src/shared/api/sneakers/types'
@@ -57,7 +57,7 @@ const onOrdered = (sneakers: SneakerMinDto[]) => {
         />
       </template>
 
-      <Empty v-else class="mt-6 text-center py-12" />
+      <UiEmpty v-else class="mt-6 text-center py-12" />
     </template>
   </UModal>
 </template>

@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import TheHeader from '~/src/widgets/the-header/ui/the-header.vue'
-import Container from '~/src/shared/ui/Container.vue'
+import UiContainer from '~/src/shared/ui/UiContainer.vue'
 import AuthLoginButton from '~/src/features/auth/auth-login/ui/AuthLoginButton.vue'
 import AuthRegisterButton from '~/src/features/auth/auth-register/ui/AuthRegisterButton.vue'
 </script>
 
 <template>
-  <Container class="layout-container flex flex-col bg-white p-8 ">
+  <UiContainer class="layout-container flex flex-col bg-white p-8 ">
     <TheHeader>
       <template #actions>
         <div class="flex gap-4 ml-auto">
@@ -17,7 +17,7 @@ import AuthRegisterButton from '~/src/features/auth/auth-register/ui/AuthRegiste
     </TheHeader>
 
     <slot />
-  </Container>
+  </UiContainer>
 </template>
 
 <style lang="scss" scoped>

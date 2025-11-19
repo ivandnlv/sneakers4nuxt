@@ -22,13 +22,13 @@ export const useSneakersStore = defineStore('sneakers', () => {
   const pending = computed(() => status.value === 'pending')
   async function fetchSneakers () {
     const { data } = await sneakersApi.getList({
-      ...routeQuery.value,
-      ...getPagePaginationQuery()
+      // ...routeQuery.value,
+      // ...getPagePaginationQuery()
     })
 
-    setTotal(data.pagination.totalItems)
+    // setTotal(data.pagination.totalItems)
 
-    return data.items
+    return data
   }
 
   watch(currentPage, async () => await refresh())

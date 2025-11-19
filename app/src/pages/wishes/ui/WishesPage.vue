@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useFavoritesStore } from '~/src/entities/favorites/model/store/favorites-store'
 import SneakerCard from '~/src/entities/sneaker/ui/SneakerCard.vue'
-import Empty from '~/src/shared/ui/Empty.vue'
+import UiEmpty from '~/src/shared/ui/UiEmpty.vue'
 import RemoveFromFavsBtn from '~/src/features/favorites/remove-from-favorites/ui/RemoveFromFavsBtn.vue'
 
 const store = useFavoritesStore()
@@ -27,5 +27,5 @@ const { favorites } = storeToRefs(store)
     </SneakerCard>
   </div>
 
-  <Empty v-else class="text-center py-12 mt-12" />
+  <UiEmpty v-else class="text-center py-12 mt-12" />
 </template>

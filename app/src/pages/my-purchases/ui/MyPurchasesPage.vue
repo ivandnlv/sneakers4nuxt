@@ -2,7 +2,7 @@
 import { formatRUB } from '~/src/shared/lib/format/number/format-price'
 import { useOrdersStore } from '~/src/entities/orders/model/store/orders-store'
 import SneakerCard from '~/src/entities/sneaker/ui/SneakerCard.vue'
-import Empty from '~/src/shared/ui/Empty.vue'
+import UiEmpty from '~/src/shared/ui/UiEmpty.vue'
 
 const store = useOrdersStore()
 </script>
@@ -25,5 +25,5 @@ const store = useOrdersStore()
     </div>
   </div>
 
-  <Empty v-else class="mt-12 py-12 text-center" />
+  <UiEmpty v-else class="mt-12 py-12 text-center" />
 </template>

@@ -2,6 +2,7 @@
 import type { SneakerMinDto } from '~/src/shared/api/sneakers/types'
 import { formatRUB } from '~/src/shared/lib/format/number/format-price'
 import { SITEMAP } from '~/src/shared/router/sitemap'
+import UiUploadImage from '~/src/shared/ui/UiUploadImage.vue'
 
 const props = withDefaults(defineProps<{
   sneaker: SneakerMinDto
@@ -29,6 +30,13 @@ const bodyClasses = computed(() => {
 
   return classes.join(' ')
 })
+
+const detailRoute = computed(() => ({
+  ...SITEMAP.sneakerDetail.route,
+  params: {
+    id: props.sneaker.id
+  }
+}))
 </script>
 
 <template>
@@ -39,18 +47,19 @@ const bodyClasses = computed(() => {
   >
     <slot name="leading-feature" />
 
-    <img class="w-full h-[112px] rounded-lg overflow-hidden object-contain" :src="sneaker.cover" alt="Обложка">
-    <nuxt-link
+    <UiUploadImage
+      v-if="sneaker?.cover"
+      class="w-full h-[112px] rounded-lg overflow-hidden object-contain"
+      :upload="sneaker.cover"
+      alt="Обложка"
+    />
+
+    <NuxtLink
       class="sneaker-card__name multiline-truncate-2 my-4 hover:text-primary-500"
-      :to="{
-        ...SITEMAP.sneakerDetail.route,
-        params: {
-          id: sneaker.id
-        }
-      }"
+      :to="detailRoute"
     >
       {{ sneaker.name }}
-    </nuxt-link>
+    </NuxtLink>
     <div class="flex justify-between gap-6">
       <div
         class="flex flex-col"

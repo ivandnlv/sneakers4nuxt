@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import Container from '~/src/shared/ui/Container.vue'
+import UiContainer from '~/src/shared/ui/UiContainer.vue'
 import SneakersList from '~/src/pages/main-page/ui/SneakersSection/SneakersList.vue'
 import { useSneakersStore } from '~/src/entities/sneaker/model/store/sneakers-store'
 
@@ -10,7 +10,7 @@ const { currentPage, total } = storeToRefs(store)
 </script>
 
 <template>
-  <Container class="mt-6">
+  <UiContainer class="mt-6">
     <MainPageSlider />
 
     <h1 class="mt-6 text-xl font-semibold">
@@ -33,5 +33,5 @@ const { currentPage, total } = storeToRefs(store)
       <!--        </div>-->
       <!--      </client-only>-->
     </div>
-  </Container>
+  </UiContainer>
 </template>

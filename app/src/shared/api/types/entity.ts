@@ -1,12 +1,12 @@
-import type { UUID } from 'node:crypto'
-
 export interface EntityBaseDates {
   createdAt: string
   deletedAt?: string | null
-  updatedAt?: string
+  updatedAt?: string | null
+  publishedAt?: string | null
 }
 
 export interface EntityBase extends EntityBaseDates {
-  id: UUID
+  id: number
+  documentId: string
   name: string
 }

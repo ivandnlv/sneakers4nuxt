@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useDebounceFn, useIntersectionObserver } from '@vueuse/core'
 import type { SelectItem, SelectValue, SelectSearchResponse } from '~/src/shared/ui/select/types'
-import SelectClearButton from '~/src/shared/ui/select/SelectClearButton.vue'
+import UiSelectClearButton from '~/src/shared/ui/select/UiSelectClearButton.vue'
 import { usePagination } from '~/src/shared/lib/composables/use-pagination'
 import { useTryCatch } from '~/src/shared/lib/composables/use-try-catch'
 import type { PagePaginationQuery, SearchQuery } from '~/src/shared/api/types'
@@ -203,7 +203,7 @@ const isSelected = computed<boolean>(() => {
       >
         {{ selectedValueTitle }}
 
-        <SelectClearButton @click.stop="resetSelected" />
+        <UiSelectClearButton @click.stop="resetSelected" />
       </div>
     </template>
     <template #option="{ option }">

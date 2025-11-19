@@ -1,5 +1,5 @@
 import type { UUID } from 'node:crypto'
-import type { SuccessResponse } from '~/src/shared/api/types/responses'
+import type { SuccessPaginationResponse, SuccessResponse } from '~/src/shared/api/types/responses'
 import type { SneakerBrand, SneakerDto, SneakerMinDto } from '~/src/shared/api/sneakers/types'
 import type { PaginationQuery, SortQuery } from '~/src/shared/api/types/pagination'
 import type { PaginationResponse } from '~/src/shared/api/types'
@@ -7,6 +7,7 @@ import { mockRequest } from '~/src/shared/lib/mock/mock-request'
 import { sneakerByIdMockRequest } from '~/src/shared/api/sneakers/mock/get-by-id'
 import { sneakersListMockResponse } from '~/src/shared/api/sneakers/mock/get-list'
 import { brandsResponse } from '~/src/shared/api/sneakers/mock/get-brands'
+import { api } from '~/src/shared/api/instance'
 
 export interface SneakersApiType {
   GetById: {
@@ -19,7 +20,7 @@ export interface SneakersApiType {
       brands: string[]
       withSale: boolean
     } & SortQuery & PaginationQuery>
-    Response: SuccessResponse<PaginationResponse<SneakerMinDto>>
+    Response: SuccessPaginationResponse<SneakerMinDto[]>
   }
 
   GetBrands: {
@@ -38,15 +39,15 @@ export const sneakersApi = {
   },
 
   // TODO: Добавить параметр
-  async getList (_: SneakersApiType['GetList']['Params']) {
+  async getList (params: SneakersApiType['GetList']['Params']) {
     // Real:
-    // return await api.$get<SneakersApiType.GetList.Response>('/sneakers', {
-    //   query: params
-    // })
+    return await api.$get<SneakersApiType['GetList']['Response']>('/sneakers?populate=*', {
+      query: params
+    })
 
     // Mock:
-    await mockRequest()
-    return sneakersListMockResponse
+    // await mockRequest()
+    // return sneakersListMockResponse
   },
 
   async getBrands () {

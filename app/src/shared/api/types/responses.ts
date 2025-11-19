@@ -1,13 +1,17 @@
-export interface BaseResponse {
-  code: number
-  message?: string[] | string
-  error: null | string
+import type { Pagination } from '~/src/shared/api/types/pagination'
+
+export interface ErrorResponse {
+  data: null
+  error: Error
 }
 
-export interface ErrorResponse extends BaseResponse {
-  error: string
-}
-
-export interface SuccessResponse<T = unknown> extends BaseResponse {
+export interface SuccessResponse<T = unknown> {
   data: T
+  meta: object
+}
+
+export interface SuccessPaginationResponse<T = unknown> extends SuccessResponse<T>{
+  meta: {
+    pagination: Pagination
+  }
 }
