@@ -1,7 +1,7 @@
 export interface StrapiPaginationQuery {
-    'pagination[page]': number
-    'pagination[pageSize]': number
-    'pagination[withCount]': number
+    'pagination[page]'?: number
+    'pagination[pageSize]'?: number
+    'pagination[withCount]'?: number
 }
 
 export interface StrapiPaginationMeta {

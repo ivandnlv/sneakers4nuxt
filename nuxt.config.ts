@@ -24,12 +24,9 @@ export default defineNuxtConfig({
     }
   },
 
-  ssr: false,
-
   runtimeConfig: {
     public: {
-      apiBase: process.env.NUXT_PUBLIC_API_BASE,
-      s3Base: process.env.NUXT_PUBLIC_S3
+      strapiBase: process.env.NUXT_PUBLIC_STRAPI_BASE
     }
   }
 })

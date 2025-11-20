@@ -1,1 +1,1 @@
-export { transformUploadUrlToProxy } from './transform-upload-url-to-proxy'
+export { transformStrapiUploadToProxy } from './transform-strapi-upload-to-proxy'
