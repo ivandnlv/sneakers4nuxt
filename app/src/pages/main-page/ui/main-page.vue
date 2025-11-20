@@ -17,7 +17,7 @@ const { currentPage, total } = storeToRefs(store)
       Каталог кроссовок
     </h1>
     <div class="flex gap-6 mt-6">
-      <div class="flex flex-col gap-4">
+      <div class="flex w-full flex-col gap-4">
         <SneakersList />
         <!--        <UPagination v-model="currentPage" :total="total" />-->
       </div>

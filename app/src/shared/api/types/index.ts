@@ -1,8 +1,7 @@
-import type { Pagination, PaginationQuery } from './pagination'
+import type { Pagination, PaginationQuery, PagePaginationQuery, OffsetPaginationQuery } from './pagination'
 
 export type * from './entity'
-export type * from './upload'
-export type { Pagination, PaginationQuery }
+export type { Pagination, PaginationQuery, PagePaginationQuery, OffsetPaginationQuery }
 export interface SearchQuery {
   search: string
 }

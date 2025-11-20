@@ -1,18 +1,27 @@
 import type { SortDirection } from '~/src/shared/api/types/sort'
 
-export interface PaginationQuery {
-  'pagination[page]': number
-  'pagination[pageSize]': number
-  'pagination[withCount]': number
+interface BasePaginationQuery {
+  limit: number
 }
+
+export interface OffsetPaginationQuery extends BasePaginationQuery {
+  offset: number
+}
+
+export interface PagePaginationQuery extends BasePaginationQuery {
+  page: number
+}
+
+export type PaginationQuery = OffsetPaginationQuery | PagePaginationQuery
 
 export type SortQuery = {
   sortDirection: SortDirection
 }
 
 export interface Pagination {
-  page: number
-  pageSize: number
-  pageCount: number
-  total: number
+  currentPage: number
+  itemCount: number
+  itemsPerPage: number
+  totalItems: number
+  totalPages: number
 }

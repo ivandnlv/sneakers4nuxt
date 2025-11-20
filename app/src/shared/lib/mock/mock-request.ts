@@ -1,9 +1,5 @@
-export function mockRequest (_?: unknown): Promise<void> {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (Math.random() > 0.01) { resolve() }
+import { promiseTimeout } from '@vueuse/core'
 
-      reject(new Error('Не удалось получить ответ от сервера'))
-    }, 50)
-  })
+export function mockRequest (_?: unknown): Promise<void> {
+  return promiseTimeout(500)
 }

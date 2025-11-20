@@ -1,4 +1,4 @@
-export interface Error {
+export interface StrapiError {
     status: number
     name: string
     message: string
