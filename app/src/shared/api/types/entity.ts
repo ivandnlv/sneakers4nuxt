@@ -1,5 +1,3 @@
-import type { UUID } from 'node:crypto'
-
 export interface EntityBaseDates {
   createdAt: string
   deletedAt?: string | null
