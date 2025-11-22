@@ -24,5 +24,10 @@ import AuthRegisterButton from '~/src/features/auth/auth-register/ui/AuthRegiste
 .layout-container {
   border-radius: 20px 20px 0 0;
   min-height: calc(100dvh - 90px);
+
+  @media (max-width: 1024px) {
+    min-height: 100svh;
+    border-radius: 0;
+  }
 }
 </style>

@@ -11,6 +11,10 @@ body {
     overflow-x: hidden;
     background: var(--ui-primary);
     font-family: 'Inter';
+
+    @media (max-width: 1024px) {
+        padding-top: 0;
+    }
 }
 
 #__nuxt {

@@ -34,8 +34,7 @@ export const useSneakersStrapiStore = defineStore('sneakers-strapi-store', () =>
   }
 
   const { data, pending, refresh } = useAsyncData('sneakers-strapi-data', fetchSneakers, {
-    default: () => [] as SneakerMinDto[],
-    server: false
+    default: () => [] as SneakerMinDto[]
   })
 
   const { runWithLoading: loadMore, isLoading: morePending } = useTryCatchWithLoading(async () => {
