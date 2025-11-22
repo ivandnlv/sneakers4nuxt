@@ -1,4 +1,5 @@
 import type { StrapiPaginationMeta } from './pagination'
+import type { StrapiError } from '~/src/shared/strapi/types/error'
 
 export interface SuccessStrapiResponse<T = unknown>{
     data: T

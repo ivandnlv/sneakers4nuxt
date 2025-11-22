@@ -23,7 +23,9 @@ function mapStrapiSneakerToMin (sneaker: StrapiSneakerEntity): SneakerMinDto {
 }
 
 export const useSneakersStrapiStore = defineStore('sneakers-strapi-store', () => {
-  const { getPagePaginationQuery, setMeta, next, setFirstPage } = useStrapiPagination()
+  const { getPagePaginationQuery, setMeta, next, setFirstPage } = useStrapiPagination({
+    limit: 8
+  })
 
   async function fetchSneakers () {
     const { data, meta } = await strapiSneakersApi.getList(getPagePaginationQuery())

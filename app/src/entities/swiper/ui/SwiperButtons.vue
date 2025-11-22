@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { ButtonSize } from '#ui/types'
+import type { ButtonProps } from '#ui/types'
 import UiArrowButton from '~/src/shared/ui/UiArrowButton.vue'
 
 withDefaults(
   defineProps<{
-      size?: ButtonSize
+      size?: ButtonProps['size']
       direction?: 'horizontal' | 'vertical'
       inContainer?: boolean
       showPrev?: boolean
@@ -20,8 +20,7 @@ withDefaults(
 )
 
 const emit = defineEmits<{
-  (e: 'prev'): void,
-  (e: 'next'): void
+  (e: 'prev' | 'next'): void
 }>()
 </script>
 
@@ -37,7 +36,7 @@ const emit = defineEmits<{
       :direction="direction"
       :class="{
         'opacity-0': !showPrev,
-        'opacity-1': showPrev
+        'opacity-100': showPrev
       }"
       type="prev"
       :size="size"
@@ -47,7 +46,7 @@ const emit = defineEmits<{
       :direction="direction"
       :class="{
         'opacity-0': !showNext,
-        'opacity-1': showNext
+        'opacity-100': showNext
       }"
       type="next"
       :size="size"

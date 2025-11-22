@@ -15,7 +15,7 @@ const props = withDefaults(
     size: 'lg',
     disabled: false,
     direction: 'horizontal',
-    color: 'neutral'
+    color: 'gray'
   }
 )
 
@@ -30,16 +30,11 @@ const icon = computed(() => {
 
 <template>
   <UButton
-    class="arrow-button"
+    class="arrow-button rounded-full size-8 !p-0 justify-center items-center"
     :size="size"
-    variant="solid"
     :color="color"
     :icon="icon"
     :disabled="disabled"
-    :padded="true"
-    :ui="{
-      rounded: 'rounded-full'
-    }"
   />
 </template>
 
