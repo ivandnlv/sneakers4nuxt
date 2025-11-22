@@ -36,7 +36,7 @@ export const useSneakersStrapiStore = defineStore('sneakers-strapi-store', () =>
     const { data, meta } = await strapiSneakersApi.getList({
       ...getPagePaginationQuery(),
       'filters[name][$containsi]': filters.search,
-      'filters[brand][name][$eqi]': filters.brands
+      'filters[brand][documentId][$eq]': filters.brands
     })
 
     setMeta(meta.pagination)

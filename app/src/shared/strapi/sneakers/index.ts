@@ -6,7 +6,7 @@ export interface StrapiSneakersApiType {
     GetList: {
         Query: Partial<{
             'filters[name][$containsi]': string
-            'filters[brand][name][$eqi]': string[] | string
+            'filters[brand][documentId][$eq]': string[] | string
         } & StrapiPaginationQuery>
         Response: SuccessStrapiPaginationResponse<StrapiSneakerEntity[]>
     }
