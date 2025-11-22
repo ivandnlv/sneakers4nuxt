@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { HeroIcons } from '~/src/shared/types/icons/hero-icons'
-import { useCartStore } from '~/src/widgets/cart/model/store/cart-store'
+import { cartModel } from '~/src/widgets/cart'
 
 const overlay = useOverlay()
 const modal = overlay.create(defineAsyncComponent(() => import('./CartModal.vue')))
 
-const store = useCartStore()
+const store = cartModel.useCartStore()
 
 const cartCounts = computed(() => {
   if (!store.cart.length) {

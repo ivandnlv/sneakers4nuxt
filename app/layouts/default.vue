@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import TheHeader from '~/src/widgets/the-header/ui/the-header.vue'
+import { TheHeader } from '~/src/widgets/the-header'
 import UiContainer from '~/src/shared/ui/UiContainer.vue'
-import AuthLoginButton from '~/src/features/auth/auth-login/ui/AuthLoginButton.vue'
-import AuthRegisterButton from '~/src/features/auth/auth-register/ui/AuthRegisterButton.vue'
+import { AuthLoginButton } from '~/src/features/auth/auth-login'
+import { AuthRegisterButton } from '~/src/features/auth/auth-register'
 </script>
 
 <template>

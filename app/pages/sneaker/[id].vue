@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SneakerIdPage from '~/src/pages/sneaker-id/SneakerIdPage.vue'
+import { SneakerIdPage } from '~/src/pages/sneaker-id'
 </script>
 
 <template>

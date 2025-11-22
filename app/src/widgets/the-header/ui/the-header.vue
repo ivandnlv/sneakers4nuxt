@@ -4,7 +4,7 @@ import UiLogo from '~/src/shared/ui/UiLogo.vue'
 import UiContainer from '~/src/shared/ui/UiContainer.vue'
 import type { SitemapRoute } from '~/src/shared/router/sitemap/types'
 import { SITEMAP } from '~/src/shared/router/sitemap'
-import OpenCartBtn from '~/src/widgets/cart/ui/OpenCartBtn.vue'
+import { OpenCartBtn } from '~/src/widgets/cart'
 
 const navRoutes: SitemapRoute[] = [
   SITEMAP.main,

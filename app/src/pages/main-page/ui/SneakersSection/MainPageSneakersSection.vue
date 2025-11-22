@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import SneakerCard from '~/src/entities/sneaker/ui/SneakerCard.vue'
-import SneakerCardLoader from '~/src/entities/sneaker/ui/SneakerCardLoader.vue'
+import { SneakerCard, SneakerCardLoader } from '~/src/entities/sneaker'
 import type { SneakerMinDto } from '~/src/shared/api/sneakers/types'
 
 defineProps<{

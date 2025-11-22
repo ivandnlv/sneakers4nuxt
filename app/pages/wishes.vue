@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import WishesPage from '~/src/pages/wishes/ui/WishesPage.vue'
+import { WishesPage } from '~/src/pages/wishes'
 </script>
 
 <template>

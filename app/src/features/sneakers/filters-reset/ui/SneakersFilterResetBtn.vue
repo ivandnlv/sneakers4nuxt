@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useSneakersStrapiStore } from '~/src/entities/sneaker/model/store/sneakers-strapi-store'
+import { sneakerModel } from '~/src/entities/sneaker'
 
-const { filters } = storeToRefs(useSneakersStrapiStore())
+const { filters } = storeToRefs(sneakerModel.useSneakersStrapiStore())
 
 const isFiltersClear = computed(() => {
   for (const _key in filters.value) {

@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import BrandSelect from '~/src/entities/brand/ui/BrandSelect.vue'
+import { BrandSelect } from '~/src/entities/brand'
+import { sneakerModel } from '~/src/entities/sneaker'
 
-import { useSneakersStrapiStore } from '~/src/entities/sneaker/model/store/sneakers-strapi-store'
-
-const { filters } = storeToRefs(useSneakersStrapiStore())
+const { filters } = storeToRefs(sneakerModel.useSneakersStrapiStore())
 </script>
 
 <template>

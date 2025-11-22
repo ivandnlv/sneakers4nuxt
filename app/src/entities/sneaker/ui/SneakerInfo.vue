@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { formatRUB } from '~/src/shared/lib/format/number/format-price'
 import type { SneakerDto } from '~/src/shared/api/sneakers/types'
-import SneakerSize from '~/src/entities/sneaker/ui/SneakerSize.vue'
+import { SneakerSize } from '~/src/entities/sneaker'
 
 withDefaults(defineProps<{
   sneaker: SneakerDto,

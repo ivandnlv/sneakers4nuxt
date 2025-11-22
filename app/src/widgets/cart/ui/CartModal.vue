@@ -1,16 +1,16 @@
 <script setup lang="ts">
-import { useCartStore } from '~/src/widgets/cart/model/store/cart-store'
-import SneakerCard from '~/src/entities/sneaker/ui/SneakerCard.vue'
+import { cartModel } from '~/src/widgets/cart'
+import { SneakerCard } from '~/src/entities/sneaker'
 import UiEmpty from '~/src/shared/ui/UiEmpty.vue'
-import RemoveFromCartBtn from '~/src/features/cart/remove-from-cart/ui/RemoveFromCartBtn.vue'
-import CreateOrderBtn from '~/src/features/cart/order/ui/CreateOrderBtn.vue'
+import { RemoveFromCartBtn } from '~/src/features/cart/remove-from-cart'
+import { CreateOrderBtn } from '~/src/features/cart/order'
 import type { SneakerMinDto } from '~/src/shared/api/sneakers/types'
-import { useOrdersStore } from '~/src/entities/orders/model/store/orders-store'
+import { ordersModel } from '~/src/entities/orders'
 
-const store = useCartStore()
+const store = cartModel.useCartStore()
 const { cart } = storeToRefs(store)
 
-const ordersStore = useOrdersStore()
+const ordersStore = ordersModel.useOrdersStore()
 
 const onOrdered = (sneakers: SneakerMinDto[]) => {
   store.createOrder()

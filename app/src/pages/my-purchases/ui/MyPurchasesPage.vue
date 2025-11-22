@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { formatRUB } from '~/src/shared/lib/format/number/format-price'
-import { useOrdersStore } from '~/src/entities/orders/model/store/orders-store'
-import SneakerCard from '~/src/entities/sneaker/ui/SneakerCard.vue'
+import { ordersModel } from '~/src/entities/orders'
+import { SneakerCard } from '~/src/entities/sneaker'
 import UiEmpty from '~/src/shared/ui/UiEmpty.vue'
 
-const store = useOrdersStore()
+const store = ordersModel.useOrdersStore()
 </script>
 
 <template>

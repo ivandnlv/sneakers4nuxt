@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { useFavoritesStore } from '~/src/entities/favorites/model/store/favorites-store'
-import SneakerCard from '~/src/entities/sneaker/ui/SneakerCard.vue'
+import { favoritesModel } from '~/src/entities/favorites'
+import { SneakerCard } from '~/src/entities/sneaker'
 import UiEmpty from '~/src/shared/ui/UiEmpty.vue'
-import RemoveFromFavsBtn from '~/src/features/favorites/remove-from-favorites/ui/RemoveFromFavsBtn.vue'
+import { RemoveFromFavsBtn } from '~/src/features/favorites/remove-from-favorites'
 
-const store = useFavoritesStore()
+const store = favoritesModel.useFavoritesStore()
 const { favorites } = storeToRefs(store)
 </script>
 

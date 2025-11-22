@@ -1,17 +1,16 @@
 <script setup lang="ts">
-import type { UUID } from 'node:crypto'
-import { useSneakerIdStore } from '~/src/entities/sneaker/model/store/sneaker-id-store'
-import SneakerSlider from '~/src/entities/sneaker/ui/SneakerSlider.vue'
-import SneakerInfo from '~/src/entities/sneaker/ui/SneakerInfo.vue'
-import AddToCartBtn from '~/src/features/cart/add-to-cart/ui/AddToCartBtn.vue'
-import SneakerIdPageLoader from '~/src/pages/sneaker-id/SneakerIdPageLoader.vue'
+import SneakerIdPageLoader from './SneakerIdPageLoader.vue'
+import { sneakerModel, SneakerSlider, SneakerInfo } from '~/src/entities/sneaker'
+import { AddToCartBtn } from '~/src/features/cart/add-to-cart'
 import { HeroIcons } from '~/src/shared/types/icons/hero-icons'
 
 const route = useRoute()
-const id = route.params.id as UUID
+const id = route.params.id as string
 
-const store = useSneakerIdStore(id)
+const store = sneakerModel.useSneakerIdStore(id)
 const { data: sneakerData, pending } = storeToRefs(store)
+
+const router = useRouter()
 </script>
 
 <template>
@@ -23,7 +22,7 @@ const { data: sneakerData, pending } = storeToRefs(store)
         color="gray"
         size="xl"
         :icon="HeroIcons.ARROW_SMALL_LEFT"
-        @click="$router.back()"
+        @click="router.back()"
       />
 
       <h1 class="text-3xl font-semibold">

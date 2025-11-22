@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import BannerListSlider from '~/src/entities/banner/ui/BannerListSlider.vue'
-import { useMainPageBannersStore } from '~/src/pages/main-page/model/store/banners'
-import SwiperButtons from '~/src/entities/swiper/ui/SwiperButtons.vue'
+import { BannerListSlider } from '~/src/entities/banner'
+import { mainPageModel } from '~/src/pages/main-page'
+import { SwiperButtons } from '~/src/entities/swiper'
 
-const { data, pending } = storeToRefs(useMainPageBannersStore())
+const { data, pending } = storeToRefs(mainPageModel.useMainPageBannersStore())
 
 const bannerListSlider = useTemplateRef('bannerListSlider')
 const sliderInstance = computed(() => bannerListSlider.value?.swiperInstanceRef ?? null)

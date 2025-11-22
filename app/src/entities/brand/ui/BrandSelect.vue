@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { useBrandsStore } from '~/src/entities/brand/model/store/use-brands-store'
+import { brandModel } from '~/src/entities/brand'
 
 defineProps<{
   multiple?: boolean
 }>()
 
-const store = useBrandsStore()
+const store = brandModel.useBrandsStore()
 const { data } = storeToRefs(store)
 
 const model = defineModel<string | string[] | undefined>()

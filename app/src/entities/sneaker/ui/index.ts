@@ -1,5 +1,0 @@
-export { default as SneakerCard } from './SneakerCard.vue'
-export { default as SneakerCardLoader } from './SneakerCardLoader.vue'
-export { default as SneakerInfo } from './SneakerInfo.vue'
-export { default as SneakerSize } from './SneakerSize.vue'
-export { dafault as SneakerSlider } from './SneakerSlider.vue'

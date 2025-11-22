@@ -1,7 +1,6 @@
 <script setup lang="ts">
-import { useSneakersStrapiStore } from '~/src/entities/sneaker/model/store/sneakers-strapi-store'
-
-const { filters } = storeToRefs(useSneakersStrapiStore())
+import { sneakerModel } from '~/src/entities/sneaker'
+const { filters } = storeToRefs(sneakerModel.useSneakersStrapiStore())
 
 const localSearch = ref<string | undefined>()
 const debouncedSearch = debouncedRef(localSearch, 500)

@@ -1,6 +1,5 @@
 <script setup lang="ts">
-
-import MyPurchasesPage from '~/src/pages/my-purchases/ui/MyPurchasesPage.vue'
+import { MyPurchasesPage } from '~/src/pages/my-purchases'
 </script>
 
 <template>
