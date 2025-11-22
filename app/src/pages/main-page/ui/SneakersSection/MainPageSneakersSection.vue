@@ -10,7 +10,7 @@ defineProps<{
 </script>
 
 <template>
-  <div class="grid sm:grid-cols-2 md:grid-cols-3 w-full lg:grid-cols-4 gap-6">
+  <div class="grid sm:grid-cols-1 md:grid-cols-2 w-full lg:grid-cols-3 gap-6">
     <template v-if="pending">
       <SneakerCardLoader v-for="i in 8" :key="`skeleton-${i}`" />
     </template>

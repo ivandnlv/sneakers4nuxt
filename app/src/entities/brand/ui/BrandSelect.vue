@@ -1,35 +1,23 @@
 <script setup lang="ts">
 import { useBrandsStore } from '~/src/entities/brand/model/store/use-brands-store'
-import type { SelectValue } from '~/src/shared/ui/select/types'
 
-const props = defineProps<{
-  modelValue: SelectValue
+defineProps<{
   multiple?: boolean
 }>()
 
 const store = useBrandsStore()
+const { data } = storeToRefs(store)
 
-const emit = defineEmits<{
-  (e: 'update:model-value', value: SelectValue): void
-}>()
-
-const model = computed({
-  get () {
-    return props.modelValue
-  },
-  set (value: SelectValue) {
-    emit('update:model-value', value)
-  }
-})
+const model = defineModel<string | string[] | undefined>()
 </script>
 
 <template>
   <USelectMenu
     v-model="model"
     size="xl"
-    option-attribute="name"
-    :options="store.data"
-    value-attribute="id"
+    :items="data"
+    value-key="name"
+    label-key="name"
     :multiple="multiple"
     placeholder="Бренды"
   />

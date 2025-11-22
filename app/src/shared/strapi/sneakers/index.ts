@@ -5,9 +5,8 @@ import { strapi } from '~/src/shared/strapi/instance'
 export interface StrapiSneakersApiType {
     GetList: {
         Query: Partial<{
-            search: string
-            brands: string[]
-            withSale: boolean
+            'filters[name][$containsi]': string
+            'filters[brand][name][$eqi]': string[] | string
         } & StrapiPaginationQuery>
         Response: SuccessStrapiPaginationResponse<StrapiSneakerEntity[]>
     }

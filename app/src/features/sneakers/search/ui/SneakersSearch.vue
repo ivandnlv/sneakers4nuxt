@@ -1,27 +1,16 @@
 <script setup lang="ts">
-const router = useRouter()
-const route = useRoute()
+import { useSneakersStrapiStore } from '~/src/entities/sneaker/model/store/sneakers-strapi-store'
 
-const search = ref(route.query?.search ?? '')
+const { filters } = storeToRefs(useSneakersStrapiStore())
 
-const changeRouteBySearch = async () => {
-  await router.replace({
-    ...route,
-    query: {
-      ...route.query,
-      search: search.value
-    }
-  })
-}
+const localSearch = ref<string | undefined>()
+const debouncedSearch = debouncedRef(localSearch, 500)
 
-const debouncedChangeRoute = useDebounceFn(changeRouteBySearch, 300)
+watch(debouncedSearch, () => (filters.value['filters[name][$containsi]'] = localSearch.value))
 
-watch(search, debouncedChangeRoute)
-watch(() => route.query, () => {
-  search.value = route.query?.search ?? ''
-})
+watch(() => filters.value['filters[name][$containsi]'], () => (localSearch.value = filters.value['filters[name][$containsi]']))
 </script>
 
 <template>
-  <UInput v-model="search" size="xl" placeholder="Поиск..." />
+  <UInput v-model="localSearch" size="xl" placeholder="Поиск по названию" />
 </template>

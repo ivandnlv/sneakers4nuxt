@@ -7,6 +7,6 @@ export interface EntityBaseDates {
 }
 
 export interface EntityBase extends EntityBaseDates {
-  id: UUID
+  id: string
   name: string
 }

@@ -2,7 +2,7 @@ import type { UUID } from 'node:crypto'
 import { defineStore } from '#imports'
 import { useStrapiPagination } from '~/src/shared/lib/composables/use-strapi-pagination'
 import { strapiSneakersApi } from '~/src/shared/strapi/sneakers'
-import type { StrapiSneakerEntity } from '~/src/shared/strapi/sneakers/types'
+import type { StrapiSneakerEntity, StrapiSneakersFilters } from '~/src/shared/strapi/sneakers/types'
 import { useTryCatchWithLoading } from '~/src/shared/lib/composables/use-try-catch-with-loading'
 import type { SneakerMinDto } from '~/src/shared/api/sneakers/types'
 import { transformStrapiUploadToProxy } from '~/src/shared/helpers'
@@ -24,11 +24,19 @@ function mapStrapiSneakerToMin (sneaker: StrapiSneakerEntity): SneakerMinDto {
 
 export const useSneakersStrapiStore = defineStore('sneakers-strapi-store', () => {
   const { getPagePaginationQuery, setMeta, next, setFirstPage } = useStrapiPagination({
-    limit: 8
+    limit: 6
+  })
+
+  const filters = reactive<StrapiSneakersFilters>({
+    'filters[brand][name][$eqi]': undefined,
+    'filters[name][$containsi]': undefined
   })
 
   async function fetchSneakers () {
-    const { data, meta } = await strapiSneakersApi.getList(getPagePaginationQuery())
+    const { data, meta } = await strapiSneakersApi.getList({
+      ...getPagePaginationQuery(),
+      ...filters
+    })
 
     setMeta(meta.pagination)
 
@@ -50,11 +58,14 @@ export const useSneakersStrapiStore = defineStore('sneakers-strapi-store', () =>
     await refresh()
   }
 
+  watch(filters, resetAndRefresh)
+
   return {
     data,
     pending,
     loadMore,
     morePending,
-    resetAndRefresh
+    resetAndRefresh,
+    filters
   }
 })
