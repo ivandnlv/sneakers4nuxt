@@ -1,5 +1,5 @@
 import type { UUID } from 'node:crypto'
-import { mockRequest } from '~/src/shared/lib/mock/mock-request'
+import { mockRequest } from '~/src/shared/helpers/mock/mock-request'
 
 // const URL = '/cart'
 

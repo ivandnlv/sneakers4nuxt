@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { SneakerMinDto } from '~/src/shared/api/sneakers/types'
-import { formatRUB } from '~/src/shared/lib/format/number/format-price'
+import { formatRUB } from '~/src/shared/helpers/format/number/format-price'
 import { SITEMAP } from '~/src/shared/router/sitemap'
 
 const props = withDefaults(defineProps<{

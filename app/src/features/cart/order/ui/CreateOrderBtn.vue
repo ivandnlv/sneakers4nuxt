@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { SneakerMinDto } from '~/src/shared/api/sneakers/types'
-import { useTryCatchWithLoading } from '~/src/shared/lib/composables/use-try-catch-with-loading'
+import { useTryCatchWithLoading } from '~/src/shared/composables/use-try-catch-with-loading'
 import { cartApi } from '~/src/shared/api/cart'
 
 const props = defineProps<{

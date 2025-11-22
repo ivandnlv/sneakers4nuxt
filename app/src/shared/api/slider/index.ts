@@ -1,7 +1,7 @@
 import type { SuccessResponse } from '~/src/shared/api/types/responses'
 import type { SlideDto } from '~/src/shared/api/slider/types'
 // import { api } from '~/src/shared/api/instance'
-import { mockRequest } from '~/src/shared/lib/mock/mock-request'
+import { mockRequest } from '~/src/shared/helpers/mock/mock-request'
 import { mainPageSlidesResponse } from '~/src/shared/api/slider/mock/get-main-slides'
 
 export interface SliderApiType {

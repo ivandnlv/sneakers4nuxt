@@ -1,5 +1,5 @@
 import type { SlideDto } from '~/src/shared/api/slider/types'
-import { createMockEntityBase } from '~/src/shared/lib/mock/create-mock-entity-base'
+import { createMockEntityBase } from '~/src/shared/helpers/mock/create-mock-entity-base'
 import type { SuccessResponse } from '~/src/shared/api/types/responses'
 
 const mainPageSlides: SlideDto[] = [

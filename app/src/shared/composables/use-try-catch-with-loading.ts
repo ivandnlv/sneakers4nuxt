@@ -1,5 +1,5 @@
-import { useTryCatch, type UseTryCatchHandler } from '~/src/shared/lib/composables/use-try-catch'
-import { useIsLoading } from '~/src/shared/lib/composables/use-is-loading'
+import { useTryCatch, type UseTryCatchHandler } from '~/src/shared/composables/use-try-catch'
+import { useIsLoading } from '~/src/shared/composables/use-is-loading'
 
 export function useTryCatchWithLoading<T extends UseTryCatchHandler<ReturnType<T>>> (handler: T) {
   const { isLoading, startLoading, finishLoading } = useIsLoading()

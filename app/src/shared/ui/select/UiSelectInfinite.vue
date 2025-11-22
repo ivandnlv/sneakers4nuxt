@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useDebounceFn, useIntersectionObserver } from '@vueuse/core'
-import type { SelectItem, SelectValue, SelectSearchResponse } from '~/src/shared/ui/select/types'
+import type { SelectItem, SelectValue, SelectSearchResponse } from '~/src/shared/types/ui/select'
 import UiSelectClearButton from '~/src/shared/ui/select/UiSelectClearButton.vue'
-import { usePagination } from '~/src/shared/lib/composables/use-pagination'
-import { useTryCatch } from '~/src/shared/lib/composables/use-try-catch'
+import { usePagination } from '~/src/shared/composables/use-pagination'
+import { useTryCatch } from '~/src/shared/composables/use-try-catch'
 import type { PagePaginationQuery, SearchQuery } from '~/src/shared/api/types'
 // import { useErrorNotification } from '~/src/shared/lib/composables/use-notification'
 import { HeroIcons } from '~/src/shared/types/icons/hero-icons'

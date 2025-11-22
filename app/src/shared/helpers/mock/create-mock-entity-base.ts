@@ -1,5 +1,5 @@
 import type { EntityBase } from '~/src/shared/api/types/responses'
-import { generateUUID } from '~/src/shared/lib/mock/generate-uuid'
+import { generateUUID } from '~/src/shared/helpers/mock/generate-uuid'
 
 export function createMockEntityBase (name = ''): EntityBase {
   return {

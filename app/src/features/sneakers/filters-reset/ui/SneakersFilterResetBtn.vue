@@ -14,13 +14,18 @@ const isFiltersClear = computed(() => {
 })
 
 const onResetFilters = () => {
-  filters.value['filters[name][$containsi]'] = undefined
-  filters.value['filters[brand][name][$eqi]'] = undefined
+  filters.value.search = undefined
+  filters.value.brands = undefined
 }
 </script>
 
 <template>
-  <UButton size="xl" color="gray" :disabled="isFiltersClear" @click="onResetFilters">
+  <UButton
+    size="xl"
+    color="gray"
+    :disabled="isFiltersClear"
+    @click="onResetFilters"
+  >
     Сбросить
   </UButton>
 </template>

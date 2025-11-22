@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { brandModel } from '~/src/entities/brand'
+import type { SelectModelValue } from '~/src/shared/types/ui/select'
 
 defineProps<{
   multiple?: boolean
@@ -8,7 +9,7 @@ defineProps<{
 const store = brandModel.useBrandsStore()
 const { data } = storeToRefs(store)
 
-const model = defineModel<string | string[] | undefined>()
+const model = defineModel<SelectModelValue>()
 </script>
 
 <template>

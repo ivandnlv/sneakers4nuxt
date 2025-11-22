@@ -1,5 +1,5 @@
 import type { SneakerBrand } from '~/src/shared/api/sneakers/types'
-import { createMockEntityBase } from '~/src/shared/lib/mock/create-mock-entity-base'
+import { createMockEntityBase } from '~/src/shared/helpers/mock/create-mock-entity-base'
 import type { SneakersApiType } from '~/src/shared/api/sneakers'
 
 export const brands: SneakerBrand[] = [

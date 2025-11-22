@@ -1,5 +1,5 @@
 import type { StrapiEntityBase, StrapiUploadEntity } from '~/src/shared/strapi/types'
-import type { StrapiSneakersApiType } from '~/src/shared/strapi/sneakers/index'
+import type { SelectModelValue } from '~/src/shared/types/ui/select'
 
 export interface SneakerSize extends StrapiEntityBase {
     number: number
@@ -17,4 +17,7 @@ export interface StrapiSneakerEntity extends StrapiEntityBase {
     brand: SneakerBrand
 }
 
-export type StrapiSneakersFilters = Pick<StrapiSneakersApiType['GetList']['Query'], 'filters[brand][name][$eqi]' | 'filters[name][$containsi]'>
+export interface StrapiSneakersFilters {
+    brands?: SelectModelValue
+    search?: string
+}

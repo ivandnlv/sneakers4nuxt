@@ -1,8 +1,8 @@
 import { useAsyncData } from '#app'
 import { sneakersApi } from '~/src/shared/api/sneakers'
 import type { SneakerMinDto } from '~/src/shared/api/sneakers/types'
-import { useRouteQueryWatcher } from '~/src/shared/lib/composables/use-route-query-watcher'
-import { usePagination } from '~/src/shared/lib/composables/use-pagination'
+import { useRouteQueryWatcher } from '~/src/shared/composables/use-route-query-watcher'
+import { usePagination } from '~/src/shared/composables/use-pagination'
 
 export const useSneakersStore = defineStore('sneakers', () => {
   const { getPagePaginationQuery, currentPage, total, setTotal } = usePagination()

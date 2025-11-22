@@ -5,9 +5,9 @@ const { filters } = storeToRefs(sneakerModel.useSneakersStrapiStore())
 const localSearch = ref<string | undefined>()
 const debouncedSearch = debouncedRef(localSearch, 500)
 
-watch(debouncedSearch, () => (filters.value['filters[name][$containsi]'] = localSearch.value))
+watch(debouncedSearch, () => (filters.value.search = localSearch.value))
 
-watch(() => filters.value['filters[name][$containsi]'], () => (localSearch.value = filters.value['filters[name][$containsi]']))
+watch(() => filters.value.search, () => (localSearch.value = filters.value.search))
 </script>
 
 <template>

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { HeroIcons } from '~/src/shared/types/icons/hero-icons'
-import { useTryCatchWithLoading } from '~/src/shared/lib/composables/use-try-catch-with-loading'
-import { sneakersApi } from '~/src/shared/api/sneakers'
+import { useTryCatchWithLoading } from '~/src/shared/composables/use-try-catch-with-loading'
 import type { SneakerDto, SneakerMinDto } from '~/src/shared/api/sneakers/types'
 import { favoritesApi } from '~/src/shared/api/favorites'
 

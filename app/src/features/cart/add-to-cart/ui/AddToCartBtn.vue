@@ -3,8 +3,7 @@
 import type { ButtonSize } from '#ui/types'
 import { HeroIcons } from '~/src/shared/types/icons/hero-icons'
 import type { SneakerDto, SneakerMinDto } from '~/src/shared/api/sneakers/types'
-import { useTryCatchWithLoading } from '~/src/shared/lib/composables/use-try-catch-with-loading'
-import { sneakersApi } from '~/src/shared/api/sneakers'
+import { useTryCatchWithLoading } from '~/src/shared/composables/use-try-catch-with-loading'
 import { cartApi } from '~/src/shared/api/cart'
 
 const props = withDefaults(defineProps<{

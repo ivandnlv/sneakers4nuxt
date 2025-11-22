@@ -13,7 +13,11 @@ const { filters } = storeToRefs(sneakerModel.useSneakersStrapiStore())
     }"
   >
     <UFormField label="Бренды">
-      <BrandSelect v-model="filters['filters[brand][name][$eqi]']" class="w-full" :multiple="true" />
+      <BrandSelect
+        v-model="filters.brands"
+        class="w-full"
+        :multiple="true"
+      />
     </UFormField>
 
     <!--    <UCheckbox v-model="filters.withSale" label="Со скидкой" />-->

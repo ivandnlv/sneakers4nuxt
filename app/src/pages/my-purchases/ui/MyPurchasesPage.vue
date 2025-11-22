@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { formatRUB } from '~/src/shared/lib/format/number/format-price'
+import { formatRUB } from '~/src/shared/helpers/format/number/format-price'
 import { ordersModel } from '~/src/entities/orders'
 import { SneakerCard } from '~/src/entities/sneaker'
 import UiEmpty from '~/src/shared/ui/UiEmpty.vue'
