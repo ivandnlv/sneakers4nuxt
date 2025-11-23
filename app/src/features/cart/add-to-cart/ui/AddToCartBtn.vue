@@ -1,22 +1,25 @@
 <script setup lang="ts">
-
-import type { ButtonSize } from '#ui/types'
+import type { ButtonProps } from '#ui/types'
 import { HeroIcons } from '~/src/shared/types/icons/hero-icons'
 import type { SneakerDto, SneakerMinDto } from '~/src/shared/api/sneakers/types'
 import { useTryCatchWithLoading } from '~/src/shared/composables/use-try-catch-with-loading'
 import { cartApi } from '~/src/shared/api/cart'
+import { authModel } from '~/src/entities/auth'
 
 const props = withDefaults(defineProps<{
   sneaker: SneakerDto | SneakerMinDto
   initialValue?: boolean
   withIcon?: boolean
   withTitle?: boolean
-  size?: ButtonSize
+  size?: ButtonProps['size']
+  canAction?: boolean
 }>(), {
   withIcon: true,
   withTitle: false,
   size: 'xl'
 })
+
+const authStore = authModel.useAuthStore()
 
 const isInCart = ref(props.sneaker?.isInCart || props?.initialValue || false)
 
@@ -24,10 +27,7 @@ watch(() => props.initialValue, () => {
   isInCart.value = props.initialValue
 })
 
-const emit = defineEmits<{
-  (e: 'added', sneaker: SneakerMinDto): void
-  (e: 'removed', sneaker: SneakerMinDto): void
-}>()
+const emit = defineEmits<{(e: 'added' | 'removed', sneaker: SneakerMinDto): void }>()
 
 const { runWithLoading, isLoading } = useTryCatchWithLoading(async () => {
   await cartApi.toggleCart(props.sneaker.id)
@@ -40,6 +40,8 @@ const { runWithLoading, isLoading } = useTryCatchWithLoading(async () => {
 
   isInCart.value = !isInCart.value
 })
+
+const toggleCartWrapped = authStore.authFeaturesPromiseWrapper(runWithLoading)
 
 const icon = computed(() => {
   if (!props.withIcon) {
@@ -64,7 +66,7 @@ const title = computed(() => {
     :color="isInCart ? 'primary' : 'gray'"
     :icon="icon"
     :loading="isLoading"
-    @click="runWithLoading"
+    @click="toggleCartWrapped()"
   >
     <span v-if="title">{{ title }}</span>
   </UButton>

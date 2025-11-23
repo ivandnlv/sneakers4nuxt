@@ -3,16 +3,16 @@ import { HeroIcons } from '~/src/shared/types/icons/hero-icons'
 import { useTryCatchWithLoading } from '~/src/shared/composables/use-try-catch-with-loading'
 import type { SneakerDto, SneakerMinDto } from '~/src/shared/api/sneakers/types'
 import { favoritesApi } from '~/src/shared/api/favorites'
+import { authModel } from '~/src/entities/auth'
 
 const props = defineProps<{
   initialValue?: boolean
   sneaker: SneakerMinDto | SneakerDto
 }>()
 
-const emit = defineEmits<{
-  (e: 'added', sneaker: SneakerMinDto): void
-  (e: 'removed', sneaker: SneakerMinDto): void
-}>()
+const emit = defineEmits<{(e: 'added' | 'removed', sneaker: SneakerMinDto): void }>()
+
+const authStore = authModel.useAuthStore()
 
 const isFavorite = ref(props?.initialValue ?? false)
 
@@ -31,6 +31,8 @@ const { runWithLoading, isLoading } = useTryCatchWithLoading(async () => {
 
   isFavorite.value = !isFavorite.value
 })
+
+const toggleFavoriteWrapped = authStore.authFeaturesPromiseWrapper(runWithLoading)
 </script>
 
 <template>
@@ -45,6 +47,6 @@ const { runWithLoading, isLoading } = useTryCatchWithLoading(async () => {
       'text-gray-300 hover:text-red-400': !isFavorite
     }"
     :loading="isLoading"
-    @click="runWithLoading"
+    @click="toggleFavoriteWrapped()"
   />
 </template>

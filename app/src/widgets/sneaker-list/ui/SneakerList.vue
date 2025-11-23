@@ -12,6 +12,8 @@ import type { StrapiPaginationQuery, SuccessStrapiPaginationResponse } from '~/s
 import type { StrapiSneakerEntity } from '~/src/shared/strapi/sneakers/types'
 import { useInfiniteScrollFetch } from '~/src/shared/composables/use-infinite-scroll-fetch'
 import { ExternalIcons } from '~/src/shared/types/icons/external-icons'
+import { AddToCartBtn } from '~/src/features/cart/add-to-cart'
+import { AddToFavBtn } from '~/src/features/favorites/add-to-favorites'
 
 const SneakerListFilters = defineAsyncComponent(() => import('./filters/SneakerListFilters.vue'))
 
@@ -129,7 +131,15 @@ if (props.infiniteScroll) {
           :key="`sneaker-${i}`"
           class="relative w-full"
           :sneaker="sneaker"
-        />
+        >
+          <template #leading-feature>
+            <AddToFavBtn class="absolute top-4 left-4" :sneaker="sneaker" />
+          </template>
+
+          <template #trailing-feature>
+            <AddToCartBtn :sneaker="sneaker" />
+          </template>
+        </SneakerCard>
 
         <template v-if="infiniteScroll">
           <div v-if="morePending" class="flex flex-col items-center justify-center col-span-full">

@@ -1,4 +1,3 @@
-import type { UUID } from 'node:crypto'
 import { mockRequest } from '~/src/shared/helpers/mock/mock-request'
 
 // const URL = '/cart'
@@ -6,18 +5,18 @@ import { mockRequest } from '~/src/shared/helpers/mock/mock-request'
 export interface CartApi {
   CreateOrder: {
     Body: {
-      sneakerIds: UUID[]
+      sneakerIds: string[]
     }
   }
 }
 
 export const cartApi = {
-  async toggleCart (_: UUID) {
+  async toggleCart (_: string) {
     // await api.$patch(`${URL}/${id}`)
     await mockRequest()
   },
 
-  async deleteFromCart (_: UUID) {
+  async deleteFromCart (_: string) {
     // await api.$delete(`${URL}/${id}`)
     await mockRequest()
   },

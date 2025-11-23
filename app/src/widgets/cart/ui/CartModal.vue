@@ -21,9 +21,6 @@ const onOrdered = (sneakers: SneakerMinDto[]) => {
 <template>
   <UModal
     title="Корзина"
-    :ui="{
-      content: 'p-6 divide-none flex flex-col gap-6'
-    }"
   >
     <template #content>
       <span class="text-xl">Корзина</span>

@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { TheHeader } from '~/src/widgets/the-header'
 import UiContainer from '~/src/shared/ui/UiContainer.vue'
-import { AuthLoginButton } from '~/src/features/auth/auth-login'
-import { AuthRegisterButton } from '~/src/features/auth/auth-register'
+import { AuthLogInButton } from '~/src/entities/auth'
 </script>
 
 <template>
@@ -10,8 +9,7 @@ import { AuthRegisterButton } from '~/src/features/auth/auth-register'
     <TheHeader>
       <template #actions>
         <div class="flex gap-4 ml-auto">
-          <AuthLoginButton />
-          <AuthRegisterButton />
+          <AuthLogInButton />
         </div>
       </template>
     </TheHeader>
