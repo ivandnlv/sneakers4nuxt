@@ -7,7 +7,7 @@ type Props = ButtonProps & {
 
 const props = withDefaults(defineProps<Props>(), {
   size: 'xl',
-  color: 'gray',
+  color: 'primary',
   label: 'Загрузить еще'
 })
 
