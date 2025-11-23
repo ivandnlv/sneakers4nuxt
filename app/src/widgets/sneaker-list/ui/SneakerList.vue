@@ -2,7 +2,6 @@
 import { promiseTimeout } from '@vueuse/core'
 import type { StrapiSneakersFilters } from '../model/types'
 import { mapStrapiSneakerToMin } from '../model/map-strapi-sneaker-to-min'
-import SneakerListFilters from './filters/SneakerListFilters.vue'
 import type { SneakerMinDto } from '~/src/shared/api/sneakers/types'
 import { strapiModel } from '~/src/entities/strapi'
 import { useTryCatchWithLoading } from '~/src/shared/composables/use-try-catch-with-loading'
@@ -14,6 +13,8 @@ import type { StrapiSneakerEntity } from '~/src/shared/strapi/sneakers/types'
 import { useInfiniteScrollFetch } from '~/src/shared/composables/use-infinite-scroll-fetch'
 import { ExternalIcons } from '~/src/shared/types/icons/external-icons'
 
+const SneakerListFilters = defineAsyncComponent(() => import('./filters/SneakerListFilters.vue'))
+
 export type SneakerListFetchListFunction = (query: StrapiPaginationQuery & {
   'filters[name][$containsi]'?: string
   'filters[brand][documentId][$eq]'?: string[] | string
@@ -22,10 +23,14 @@ export type SneakerListFetchListFunction = (query: StrapiPaginationQuery & {
 const props = withDefaults(defineProps<{
   uniqueId: string
   limit?: number
+  itemsUi?: string
   infiniteScroll?: boolean
+  needFilters?: boolean
   fetchListFunction: SneakerListFetchListFunction
 }>(), {
-  limit: 6
+  limit: 6,
+  itemsUi: '',
+  needFilters: true
 })
 
 const [isInitialized, toggleInitialized] = useToggle()
@@ -105,9 +110,14 @@ if (props.infiniteScroll) {
 </script>
 
 <template>
-  <div :class="isInitialEmpty ? 'flex flex-col' : 'grid grid-cols-[1fr_320px] gap-6'">
+  <div
+    :class="{
+      'flex flex-col': isInitialEmpty || !needFilters,
+      'grid grid-cols-[1fr_320px] gap-6': !isInitialEmpty && needFilters
+    }"
+  >
     <div
-      class="grid sm:grid-cols-1 md:grid-cols-2 w-full lg:pb-[20px] lg:grid-cols-3 gap-6"
+      :class="['grid sm:grid-cols-1 md:grid-cols-2 w-full lg:pb-[20px] lg:grid-cols-3 gap-6', itemsUi]"
     >
       <template v-if="pending">
         <SneakerCardLoader v-for="i in 8" :key="`skeleton-${i}`" />
@@ -147,20 +157,22 @@ if (props.infiniteScroll) {
       />
     </div>
 
-    <ClientOnly v-if="!isInitialEmpty">
-      <SneakerListFilters
-        v-model="filters"
-        :disabled="currentPending"
-        :is-filters-clear="isFiltersClear"
-      />
+    <template v-if="needFilters">
+      <ClientOnly v-if="!isInitialEmpty">
+        <SneakerListFilters
+          v-model="filters"
+          :disabled="currentPending"
+          :is-filters-clear="isFiltersClear"
+        />
 
-      <template #fallback>
-        <div class="flex flex-col gap-4 w-full rounded-md">
-          <USkeleton class="w-full h-10" />
+        <template #fallback>
+          <div class="flex flex-col gap-4 w-full rounded-md">
+            <USkeleton class="w-full h-10" />
 
-          <USkeleton class="w-full h-[180px] rounded-xl" />
-        </div>
-      </template>
-    </ClientOnly>
+            <USkeleton class="w-full h-[180px] rounded-xl" />
+          </div>
+        </template>
+      </ClientOnly>
+    </template>
   </div>
 </template>
