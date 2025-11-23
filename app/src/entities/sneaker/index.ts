@@ -1,4 +1,3 @@
-export * as sneakerModel from './model'
 export { default as SneakerCard } from './ui/SneakerCard.vue'
 export { default as SneakerCardLoader } from './ui/SneakerCardLoader.vue'
 export { default as SneakerInfo } from './ui/SneakerInfo.vue'

@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import type { EntitySelectProps } from '~/src/shared/types/ui/select-entity'
+import { useStrapiPagination } from '../model/composables/use-strapi-pagination'
+import type { StrapiEntitySelectProps } from '~/src/shared/types/strapi'
 import type { SelectItemObject, SelectModelValue } from '~/src/shared/types/ui/select'
-import { useStrapiPagination } from '~/src/shared/composables/use-strapi-pagination'
 import { useTryCatchWithLoading } from '~/src/shared/composables/use-try-catch-with-loading'
 import { useInfiniteScrollFetch } from '~/src/shared/composables/use-infinite-scroll-fetch'
 import { ExternalIcons } from '~/src/shared/types/icons/external-icons'
 
-const props = withDefaults(defineProps<EntitySelectProps>(), {
+const props = withDefaults(defineProps<StrapiEntitySelectProps>(), {
   size: 'lg',
   portal: true,
   searchPlaceholder: 'Поиск',

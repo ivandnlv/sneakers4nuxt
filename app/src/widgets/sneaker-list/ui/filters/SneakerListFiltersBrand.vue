@@ -1,22 +1,22 @@
 <script setup lang="ts">
+import { StrapiEntitySelectBase, strapiModel } from '~/src/entities/strapi'
 import type {
-  EntitySelectBaseProps,
-  EntitySelectFetchList,
-  EntitySelectFetchSelected
-} from '~/src/shared/types/ui/select-entity'
-import UiSelectEntityBase from '~/src/shared/ui/select/UiSelectEntityBase.vue'
+  StrapiEntitySelectBaseProps,
+  StrapiEntitySelectFetchList,
+  StrapiEntitySelectFetchSelected
+} from '~/src/shared/types/strapi'
 import { strapiBrandsApi } from '~/src/shared/strapi/brands'
 import { transformBaseEntityToSelectObject } from '~/src/shared/helpers/transform-base-entity-to-select-object'
-import { useUiSelectEntity } from '~/src/shared/composables/ui/use-ui-select-entity'
 
-const props = withDefaults(defineProps<EntitySelectBaseProps>(), {
-  placeholder: 'Выберите бренд',
-  searchPlaceholder: 'Поиск по названию'
+const props = withDefaults(defineProps<StrapiEntitySelectBaseProps>(), {
+  placeholder: 'Выберите бренды',
+  searchPlaceholder: 'Поиск по названию',
+  infiniteScroll: true
 })
 
-const { propsToBase } = useUiSelectEntity(props)
+const { propsToBase } = strapiModel.useStrapiEntitySelectBase(props)
 
-const fetchList: EntitySelectFetchList = async (query) => {
+const fetchList: StrapiEntitySelectFetchList = async (query) => {
   const { data, meta } = await strapiBrandsApi.getList(query)
 
   return {
@@ -25,7 +25,7 @@ const fetchList: EntitySelectFetchList = async (query) => {
   }
 }
 
-const fetchSelected: EntitySelectFetchSelected = async (query) => {
+const fetchSelected: StrapiEntitySelectFetchSelected = async (query) => {
   const { data } = await strapiBrandsApi.getList({
     ...query,
     'pagination[pageSize]': -1
@@ -36,7 +36,7 @@ const fetchSelected: EntitySelectFetchSelected = async (query) => {
 </script>
 
 <template>
-  <UiSelectEntityBase
+  <StrapiEntitySelectBase
     v-bind="propsToBase"
     :fetch-list-function="fetchList"
     :fetch-selected-function="fetchSelected"
