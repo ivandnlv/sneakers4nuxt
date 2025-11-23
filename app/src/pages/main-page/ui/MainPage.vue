@@ -2,6 +2,7 @@
 import MainPageBanners from './MainPageBanners.vue'
 import UiContainer from '~/src/shared/ui/UiContainer.vue'
 import { SneakerList } from '~/src/widgets/sneaker-list'
+import { strapiSneakersApi } from '~/src/shared/strapi/sneakers'
 </script>
 
 <template>
@@ -12,6 +13,11 @@ import { SneakerList } from '~/src/widgets/sneaker-list'
       Каталог кроссовок
     </h1>
 
-    <SneakerList class="mt-6" />
+    <SneakerList
+      :fetch-list-function="strapiSneakersApi.getList"
+      unique-id="main-page-sneakers-list"
+      class="mt-6"
+      :limit="9"
+    />
   </UiContainer>
 </template>

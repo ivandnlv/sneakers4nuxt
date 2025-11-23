@@ -1,12 +1,13 @@
 import type { StrapiPaginationQuery, StrapiPaginationMeta } from '~/src/shared/strapi/types'
 
 export interface UseStrapiPaginationParams {
+  uniqueId: string
   page?: number
   limit?: number
 }
 
-export const useStrapiPagination = ({ limit, page }: UseStrapiPaginationParams = { limit: 10, page: 1 }) => {
-  const paginationMeta = ref<StrapiPaginationMeta | null>(null)
+export const useStrapiPagination = ({ limit, page, uniqueId }: UseStrapiPaginationParams = { limit: 10, page: 1, uniqueId: '' }) => {
+  const paginationMeta = useState<StrapiPaginationMeta | null>(`use-strapi-pagination-meta-${uniqueId}`, () => null)
 
   const currentPageSize = computed(() => paginationMeta.value?.pageSize ?? limit)
 
