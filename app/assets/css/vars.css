@@ -1,7 +1,7 @@
 @import 'tailwindcss';
 @import '@nuxt/ui';
 
-@theme static {
+@theme {
     --color-primary-50: #F2FCED;
     --color-primary-100: #DEF4D1;
     --color-primary-200: #CAEDB5;
