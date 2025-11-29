@@ -3,13 +3,15 @@ import { object } from 'yup'
 import type { StrapiAuthLogInDTO } from '~/src/shared/strapi/auth/types'
 import { appValidator } from '~/src/shared/helpers/validate'
 import { authModel } from '~/src/entities/auth'
+import { useTryCatchWithLoading } from '~/src/shared/composables/use-try-catch-with-loading'
+import { strapiAuthApi } from '~/src/shared/strapi/auth'
 
 export interface AuthLoginModalProps {
   title?: string
 }
 
 withDefaults(defineProps<AuthLoginModalProps>(), {
-  title: 'Авторизоваться на платформе'
+  title: 'Авторизация'
 })
 
 const state = reactive<StrapiAuthLogInDTO>({
@@ -23,12 +25,19 @@ const schema = object({
 })
 
 const authStore = authModel.useAuthStore()
-const { isLoggingIn } = storeToRefs(authStore)
+const { user } = storeToRefs(authStore)
+
+const { runWithLoading: logIn, isLoading: isLoggingIn } = useTryCatchWithLoading(async () => {
+  const response = await strapiAuthApi.logIn(state)
+
+  authStore.setTokensByApi(response)
+  user.value = response.user
+})
 </script>
 
 <template>
   <UModal
-    title="Авторизоваться"
+    :title="title"
   >
     <template #content>
       <span class="text-xl" v-html="title" />
@@ -37,7 +46,7 @@ const { isLoggingIn } = storeToRefs(authStore)
         class="flex flex-col gap-6"
         :state="state"
         :schema="schema"
-        @submit="() => authStore.logIn(state)"
+        @submit="logIn()"
       >
         <UFormField
           label="Email"

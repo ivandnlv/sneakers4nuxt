@@ -1,8 +1,5 @@
 import type { AuthLoginModalProps } from '../../ui/AuthLoginModal.vue'
 import type { StrapiUserEntity } from '~/src/shared/strapi/user/types'
-import { useTryCatchWithLoading } from '~/src/shared/composables/use-try-catch-with-loading'
-import { strapiAuthApi } from '~/src/shared/strapi/auth'
-import type { StrapiAuthLogInDTO } from '~/src/shared/strapi/auth/types'
 
 export const useAuthStore = defineStore('auth-store', () => {
   const user = useCookie<StrapiUserEntity | null>('auth-store:user', {
@@ -17,13 +14,10 @@ export const useAuthStore = defineStore('auth-store', () => {
     default: () => null
   })
 
-  const { runWithLoading: logIn, isLoading: isLoggingIn } = useTryCatchWithLoading(async (body: StrapiAuthLogInDTO) => {
-    const response = await strapiAuthApi.logIn(body)
-
-    user.value = response.user
-    accessToken.value = response.jwt
-    refreshToken.value = response.refreshToken
-  })
+  function setTokensByApi ({ jwt, refreshToken: refreshTokenApi }: { jwt: string, refreshToken: string }) {
+    accessToken.value = jwt
+    refreshToken.value = refreshTokenApi
+  }
 
   const isLoggedIn = computed(() => Boolean(user.value))
 
@@ -47,8 +41,7 @@ export const useAuthStore = defineStore('auth-store', () => {
     user,
     accessToken,
     refreshToken,
-    logIn,
-    isLoggingIn,
+    setTokensByApi,
     isLoggedIn,
     authFeaturesPromiseWrapper,
     openAuthModal: authModal.open

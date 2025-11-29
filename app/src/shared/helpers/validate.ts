@@ -3,7 +3,9 @@ import { VALIDATE_MESSAGES } from '~/src/shared/constants/validate/messages'
 
 export const appValidator = {
   required,
-  requiredEmail
+  requiredEmail,
+  requiredPassword,
+  requiredPasswordConfirm
 }
 
 function required () {
@@ -12,4 +14,14 @@ function required () {
 
 function requiredEmail () {
   return required().email(VALIDATE_MESSAGES.EMAIL)
+}
+
+function requiredPassword () {
+  return required().min(6, VALIDATE_MESSAGES.PASSWORD_MIN_LENGTH_6).max(32, VALIDATE_MESSAGES.PASSWORD_MAX_LENGTH_32)
+}
+
+function requiredPasswordConfirm (password: string) {
+  return required().test('password-match-test', VALIDATE_MESSAGES.PASSWORD_MATCH, (value) => {
+    return value === password
+  })
 }

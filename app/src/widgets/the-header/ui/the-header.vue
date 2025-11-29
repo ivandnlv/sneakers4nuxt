@@ -1,23 +1,24 @@
 <script setup lang="ts">
-
 import UiLogo from '~/src/shared/ui/UiLogo.vue'
 import UiContainer from '~/src/shared/ui/UiContainer.vue'
 import type { SitemapRoute } from '~/src/shared/router/sitemap/types'
 import { SITEMAP } from '~/src/shared/router/sitemap'
 import { OpenCartBtn } from '~/src/widgets/cart'
+import { authModel, AuthLogInButton, AuthRegistrationButton } from '~/src/entities/auth'
 
 const navRoutes: SitemapRoute[] = [
   SITEMAP.main,
   SITEMAP.wishes,
   SITEMAP.myPurchases
 ]
+
+const authStore = authModel.useAuthStore()
+const { isLoggedIn } = storeToRefs(authStore)
 </script>
 
 <template>
-  <UiContainer class="flex gap-6 items-center w-full justify-between gap-6 flex-wrap pb-8 border-b border-gray-200">
+  <UiContainer class="flex items-center w-full justify-between gap-6 flex-wrap pb-8 border-b border-gray-200">
     <UiLogo />
-
-    <!--    <slot name="actions" />-->
 
     <nav class="flex gap-6 items-center">
       <nuxt-link
@@ -30,7 +31,12 @@ const navRoutes: SitemapRoute[] = [
       </nuxt-link>
     </nav>
 
-    <OpenCartBtn />
+    <OpenCartBtn v-if="isLoggedIn" />
+
+    <div v-else class="flex gap-4">
+      <AuthLogInButton />
+      <AuthRegistrationButton color="gray" />
+    </div>
   </UiContainer>
 </template>
 
