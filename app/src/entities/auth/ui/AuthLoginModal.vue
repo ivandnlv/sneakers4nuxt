@@ -4,9 +4,11 @@ import type { StrapiAuthLogInDTO } from '~/src/shared/strapi/auth/types'
 import { appValidator } from '~/src/shared/helpers/validate'
 import { authModel } from '~/src/entities/auth'
 
-withDefaults(defineProps<{
+export interface AuthLoginModalProps {
   title?: string
-}>(), {
+}
+
+withDefaults(defineProps<AuthLoginModalProps>(), {
   title: 'Авторизоваться на платформе'
 })
 
@@ -29,7 +31,7 @@ const { isLoggingIn } = storeToRefs(authStore)
     title="Авторизоваться"
   >
     <template #content>
-      <span class="text-xl">{{ title }}</span>
+      <span class="text-xl" v-html="title" />
 
       <UForm
         class="flex flex-col gap-6"

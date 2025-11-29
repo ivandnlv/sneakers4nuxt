@@ -32,7 +32,9 @@ const { runWithLoading, isLoading } = useTryCatchWithLoading(async () => {
   isFavorite.value = !isFavorite.value
 })
 
-const toggleFavoriteWrapped = authStore.authFeaturesPromiseWrapper(runWithLoading)
+const toggleFavoriteWrapped = authStore.authFeaturesPromiseWrapper(runWithLoading, {
+  title: 'Чтобы добавить товар в избранное,<br /> <b>вам необходимо авторизоваться</b>'
+})
 </script>
 
 <template>

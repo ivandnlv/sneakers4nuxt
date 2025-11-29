@@ -1,3 +1,4 @@
+import type { AuthLoginModalProps } from '../../ui/AuthLoginModal.vue'
 import type { StrapiUserEntity } from '~/src/shared/strapi/user/types'
 import { useTryCatchWithLoading } from '~/src/shared/composables/use-try-catch-with-loading'
 import { strapiAuthApi } from '~/src/shared/strapi/auth'
@@ -29,13 +30,13 @@ export const useAuthStore = defineStore('auth-store', () => {
   const overlay = useOverlay()
   const authModal = overlay.create(defineAsyncComponent(() => import('../../ui/AuthLoginModal.vue')))
 
-  // Wrapper для функций, которым нужна обязательно авторизация
   function authFeaturesPromiseWrapper<F extends (...args: any[]) => any>(
-    fn: F
+    fn: F,
+    modalOptions?: AuthLoginModalProps
   ): (...args: Parameters<F>) => Promise<Awaited<ReturnType<F>> | undefined> {
     return (...args: Parameters<F>) => {
       if (!isLoggedIn.value) {
-        authModal.open()
+        authModal.open(modalOptions)
         return Promise.resolve(undefined)
       }
       return Promise.resolve(fn(...args) as ReturnType<F>).then(r => r as Awaited<ReturnType<F>>)

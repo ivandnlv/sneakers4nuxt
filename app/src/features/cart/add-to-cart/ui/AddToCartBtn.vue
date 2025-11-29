@@ -41,7 +41,9 @@ const { runWithLoading, isLoading } = useTryCatchWithLoading(async () => {
   isInCart.value = !isInCart.value
 })
 
-const toggleCartWrapped = authStore.authFeaturesPromiseWrapper(runWithLoading)
+const toggleCartWrapped = authStore.authFeaturesPromiseWrapper(runWithLoading, {
+  title: 'Чтобы добавить товар в корзину,<br /> <b>вам необходимо авторизоваться</b>'
+})
 
 const icon = computed(() => {
   if (!props.withIcon) {
