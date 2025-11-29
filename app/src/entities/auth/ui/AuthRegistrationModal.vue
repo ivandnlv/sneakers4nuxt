@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { object } from 'yup'
 import { useAuthStore } from '../model/store/use-auth-store'
+import AuthModalSwitch from './AuthModalSwitch.vue'
 import type { StrapiAuthSignInDTO } from '~/src/shared/strapi/auth/types'
 import { appValidator } from '~/src/shared/helpers/validate'
 import { useTryCatchWithLoading } from '~/src/shared/composables/use-try-catch-with-loading'
@@ -17,6 +18,8 @@ interface StrapiAuthSignInState extends StrapiAuthSignInDTO {
 withDefaults(defineProps<AuthRegistrationModalProps>(), {
   title: 'Регистрация'
 })
+
+const emit = defineEmits<{(e: 'close'): void }>()
 
 const state = reactive<StrapiAuthSignInState>({
   email: '',
@@ -45,20 +48,29 @@ const { runWithLoading: register, isLoading: isRegisterLoading } = useTryCatchWi
   authStore.setTokensByApi(response)
 
   user.value = response.user
+
+  emit('close')
 })
+
+const onSwitch = () => {
+  emit('close')
+  authStore.openAuthModal()
+}
 </script>
 
 <template>
   <UModal
     :title="title"
+    description="Регистрация"
   >
     <template #content>
-      <span class="text-xl" v-html="title" />
+      <h2 class="text-subtitle" v-html="title" />
 
       <UForm
         class="flex flex-col gap-6"
         :state="state"
         :schema="schema"
+        :validate-on="['input', 'change']"
         @submit="register()"
       >
         <UFormField
@@ -103,14 +115,18 @@ const { runWithLoading: register, isLoading: isRegisterLoading } = useTryCatchWi
           />
         </UFormField>
 
-        <UButton
-          size="xl"
-          block
-          type="submit"
-          :loading="isRegisterLoading"
-        >
-          Зарегистрироваться
-        </UButton>
+        <div class="flex flex-col gap-2">
+          <UButton
+            size="xl"
+            block
+            type="submit"
+            :loading="isRegisterLoading"
+          >
+            Зарегистрироваться
+          </UButton>
+
+          <AuthModalSwitch from="register" @login="onSwitch" />
+        </div>
       </UForm>
     </template>
   </UModal>
