@@ -32,7 +32,7 @@ const schema = object({
   email: appValidator.requiredEmail(),
   username: appValidator.required(),
   password: appValidator.requiredPassword(),
-  passwordConfirm: appValidator.requiredPasswordConfirm(state.password)
+  passwordConfirm: appValidator.requiredPasswordConfirm(toRef(state, 'password'))
 })
 
 const authStore = useAuthStore()
@@ -82,7 +82,19 @@ const onSwitch = () => {
             v-model="state.email"
             class="w-full"
             placeholder="Введите email"
-            type="email"
+            size="xl"
+          />
+        </UFormField>
+
+        <UFormField
+          label="Имя"
+          name="username"
+          required
+        >
+          <UInput
+            v-model="state.username"
+            class="w-full"
+            placeholder="Введите ваше имя"
             size="xl"
           />
         </UFormField>

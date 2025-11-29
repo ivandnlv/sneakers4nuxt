@@ -9,8 +9,7 @@ export function useTryCatch<T extends UseTryCatchHandler<ReturnType<T>>> (handle
     try {
       return await handler(...args)
     } catch (e: unknown) {
-      if (isError(e)) {
-        // useErrorNotification(e.message)
+      if (typeof e === 'object' && e && 'message' in e) {
         console.log(e.message)
       }
     }

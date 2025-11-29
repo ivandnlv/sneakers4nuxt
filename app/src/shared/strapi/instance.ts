@@ -1,6 +1,5 @@
 import type { FetchInstance } from '@refactorjs/ofetch'
 import type { ReturnType } from 'birpc'
-import { throwApiError } from '~/src/shared/api/throw-api-error'
 import { apiFactory } from '~/src/shared/api/api-factory'
 
 let strapiInstance: FetchInstance
@@ -13,13 +12,10 @@ export function initializeStrapi () {
     return strapi
   }
 
-  const config = useRuntimeConfig()
-
   strapiInstance = $http.create({
-    baseURL: `${import.meta.server ? config.public.strapiBase : ''}${import.meta.server ? '/api' : '/api/strapi'}`
+    baseURL: `${import.meta.server ? 'http://localhost:3000' : ''}/api/strapi`,
+    headers: useRequestHeaders(['cookie']) ?? undefined
   })
-
-  strapiInstance.onResponseError(throwApiError)
 
   strapi = apiFactory(strapiInstance)
 

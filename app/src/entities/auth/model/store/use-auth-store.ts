@@ -1,16 +1,17 @@
 import type { AuthLoginModalProps } from '../../ui/AuthLoginModal.vue'
 import type { StrapiUserEntity } from '~/src/shared/strapi/user/types'
+import { AUTH_ACCESS_TOKEN_COOKIE_KEY, AUTH_REFRESH_TOKEN_COOKIE_KEY } from '~/src/shared/constants/auth'
 
 export const useAuthStore = defineStore('auth-store', () => {
   const user = useCookie<StrapiUserEntity | null>('auth-store:user', {
     default: () => null
   })
 
-  const accessToken = useCookie<string | null>('auth-store:accessToken', {
+  const accessToken = useCookie<string | null>(AUTH_ACCESS_TOKEN_COOKIE_KEY, {
     default: () => null
   })
 
-  const refreshToken = useCookie<string | null>('auth-store:refreshToken', {
+  const refreshToken = useCookie<string | null>(AUTH_REFRESH_TOKEN_COOKIE_KEY, {
     default: () => null
   })
 

@@ -20,8 +20,8 @@ function requiredPassword () {
   return required().min(6, VALIDATE_MESSAGES.PASSWORD_MIN_LENGTH_6).max(32, VALIDATE_MESSAGES.PASSWORD_MAX_LENGTH_32)
 }
 
-function requiredPasswordConfirm (password: string) {
+function requiredPasswordConfirm (password: Ref<string>) {
   return required().test('password-match-test', VALIDATE_MESSAGES.PASSWORD_MATCH, (value) => {
-    return value === password
+    return value === password.value
   })
 }

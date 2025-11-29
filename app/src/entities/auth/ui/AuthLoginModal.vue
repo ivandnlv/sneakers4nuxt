@@ -65,14 +65,13 @@ const onSwitch = () => {
       >
         <UFormField
           label="Email"
-          name="email"
+          name="identifier"
           required
         >
           <UInput
             v-model="state.identifier"
             class="w-full"
             placeholder="Введите email"
-            type="email"
             size="xl"
           />
         </UFormField>
