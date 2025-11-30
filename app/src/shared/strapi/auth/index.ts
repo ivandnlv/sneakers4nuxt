@@ -38,5 +38,9 @@ export const strapiAuthApi = {
     return await strapi.$post<StrapiAuthApiType['Refresh']['Response']>('/auth/refresh', {
       body
     })
+  },
+
+  async logout () {
+    return await strapi.$post('/auth/logout')
   }
 }

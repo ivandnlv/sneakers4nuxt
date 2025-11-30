@@ -38,6 +38,12 @@ export const useAuthStore = defineStore('auth-store', () => {
     }
   }
 
+  function resetUserData () {
+    accessToken.value = null
+    refreshToken.value = null
+    user.value = null
+  }
+
   return {
     user,
     accessToken,
@@ -45,6 +51,7 @@ export const useAuthStore = defineStore('auth-store', () => {
     setTokensByApi,
     isLoggedIn,
     authFeaturesPromiseWrapper,
-    openAuthModal: authModal.open
+    openAuthModal: authModal.open,
+    resetUserData
   }
 })

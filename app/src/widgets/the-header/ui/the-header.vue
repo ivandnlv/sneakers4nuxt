@@ -4,7 +4,7 @@ import UiContainer from '~/src/shared/ui/UiContainer.vue'
 import type { SitemapRoute } from '~/src/shared/router/sitemap/types'
 import { SITEMAP } from '~/src/shared/router/sitemap'
 import { OpenCartBtn } from '~/src/widgets/cart'
-import { authModel, AuthLogInButton, AuthRegistrationButton } from '~/src/entities/auth'
+import { authModel, AuthLogInButton, AuthRegistrationButton, AuthLogoutButton } from '~/src/entities/auth'
 
 const navRoutes: SitemapRoute[] = [
   SITEMAP.main,
@@ -20,7 +20,7 @@ const { isLoggedIn } = storeToRefs(authStore)
   <UiContainer class="flex items-center w-full justify-between gap-6 flex-wrap pb-8 border-b border-gray-200">
     <UiLogo />
 
-    <nav class="flex gap-6 items-center">
+    <nav v-if="isLoggedIn" class="flex gap-6 items-center">
       <nuxt-link
         v-for="(link, i) in navRoutes"
         :key="i"
@@ -31,7 +31,10 @@ const { isLoggedIn } = storeToRefs(authStore)
       </nuxt-link>
     </nav>
 
-    <OpenCartBtn v-if="isLoggedIn" />
+    <div v-if="isLoggedIn" class="flex gap-4 items-center">
+      <OpenCartBtn />
+      <AuthLogoutButton />
+    </div>
 
     <div v-else class="flex gap-4">
       <AuthLogInButton />

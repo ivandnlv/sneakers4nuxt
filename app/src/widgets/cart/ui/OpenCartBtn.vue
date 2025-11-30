@@ -25,7 +25,7 @@ const openCartModal = () => {
     <span v-if="cartCounts" class="absolute -right-6 -bottom-1 bg-primary-600 text-white z-10 w-5 h-5 flex flex-col justify-center items-center rounded-full text-xs">{{ cartCounts }}</span>
 
     <UButton
-      class="w-6 h-6 hover:text-primary-600"
+      class="hover:text-primary-600"
       color="gray"
       size="xl"
       variant="ghost"
