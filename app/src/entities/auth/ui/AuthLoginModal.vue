@@ -3,9 +3,7 @@ import { object } from 'yup'
 import AuthModalSwitch from './AuthModalSwitch.vue'
 import type { StrapiAuthLogInDTO } from '~/src/shared/strapi/auth/types'
 import { appValidator } from '~/src/shared/helpers/validate'
-import { authModel } from '~/src/entities/auth'
 import { useTryCatchWithLoading } from '~/src/shared/composables/use-try-catch-with-loading'
-import { strapiAuthApi } from '~/src/shared/strapi/auth'
 
 export interface AuthLoginModalProps {
   title?: string
@@ -30,14 +28,10 @@ const schema = object({
 const overlay = useOverlay()
 const registerModal = overlay.create(defineAsyncComponent(() => import('./AuthRegistrationModal.vue')))
 
-const authStore = authModel.useAuthStore()
-const { user } = storeToRefs(authStore)
+const { signIn } = useAuth()
 
 const { runWithLoading: logIn, isLoading: isLoggingIn } = useTryCatchWithLoading(async () => {
-  const response = await strapiAuthApi.logIn(state)
-
-  authStore.setTokensByApi(response)
-  user.value = response.user
+  await signIn(state, { redirect: false })
 
   emit('close')
 })

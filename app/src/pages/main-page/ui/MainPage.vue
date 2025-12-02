@@ -6,7 +6,7 @@ import { strapiSneakersApi } from '~/src/shared/strapi/sneakers'
 </script>
 
 <template>
-  <UiContainer class="mt-6">
+  <UiContainer>
     <MainPageBanners />
 
     <h1 class="mt-6 text-xl font-semibold">

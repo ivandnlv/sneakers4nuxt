@@ -1,26 +1,11 @@
 import type { AuthLoginModalProps } from '../../ui/AuthLoginModal.vue'
-import type { StrapiUserEntity } from '~/src/shared/strapi/user/types'
-import { AUTH_ACCESS_TOKEN_COOKIE_KEY, AUTH_REFRESH_TOKEN_COOKIE_KEY } from '~/src/shared/constants/auth'
 
 export const useAuthStore = defineStore('auth-store', () => {
-  const user = useCookie<StrapiUserEntity | null>('auth-store:user', {
-    default: () => null
-  })
+  const { status, data } = useAuth()
 
-  const accessToken = useCookie<string | null>(AUTH_ACCESS_TOKEN_COOKIE_KEY, {
-    default: () => null
-  })
+  const isLoggedIn = computed(() => status.value === 'authenticated')
 
-  const refreshToken = useCookie<string | null>(AUTH_REFRESH_TOKEN_COOKIE_KEY, {
-    default: () => null
-  })
-
-  function setTokensByApi ({ jwt, refreshToken: refreshTokenApi }: { jwt: string, refreshToken: string }) {
-    accessToken.value = jwt
-    refreshToken.value = refreshTokenApi
-  }
-
-  const isLoggedIn = computed(() => Boolean(user.value))
+  const user = computed(() => data.value?.user ?? null)
 
   const overlay = useOverlay()
   const authModal = overlay.create(defineAsyncComponent(() => import('../../ui/AuthLoginModal.vue')))
@@ -38,20 +23,10 @@ export const useAuthStore = defineStore('auth-store', () => {
     }
   }
 
-  function resetUserData () {
-    accessToken.value = null
-    refreshToken.value = null
-    user.value = null
-  }
-
   return {
-    user,
-    accessToken,
-    refreshToken,
-    setTokensByApi,
     isLoggedIn,
+    user,
     authFeaturesPromiseWrapper,
-    openAuthModal: authModal.open,
-    resetUserData
+    openAuthModal: authModal.open
   }
 })

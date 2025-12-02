@@ -14,7 +14,9 @@ import { AuthLogInButton } from '~/src/entities/auth'
       </template>
     </TheHeader>
 
-    <slot />
+    <main class="pt-8 mt-8 border-t border-gray-200">
+      <slot />
+    </main>
   </UiContainer>
 </template>
 

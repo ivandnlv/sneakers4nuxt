@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import { object } from 'yup'
-import { useAuthStore } from '../model/store/use-auth-store'
 import AuthModalSwitch from './AuthModalSwitch.vue'
 import type { StrapiAuthSignInDTO } from '~/src/shared/strapi/auth/types'
 import { appValidator } from '~/src/shared/helpers/validate'
 import { useTryCatchWithLoading } from '~/src/shared/composables/use-try-catch-with-loading'
-import { strapiAuthApi } from '~/src/shared/strapi/auth'
 
 export interface AuthRegistrationModalProps {
   title?: string
@@ -35,19 +33,14 @@ const schema = object({
   passwordConfirm: appValidator.requiredPasswordConfirm(toRef(state, 'password'))
 })
 
-const authStore = useAuthStore()
-const { user } = storeToRefs(authStore)
+const { signUp } = useAuth()
 
 const { runWithLoading: register, isLoading: isRegisterLoading } = useTryCatchWithLoading(async () => {
-  const response = await strapiAuthApi.register({
+  await signUp({
     email: state.email,
     password: state.password,
     username: state.username
-  })
-
-  authStore.setTokensByApi(response)
-
-  user.value = response.user
+  }, { redirect: false })
 
   emit('close')
 })

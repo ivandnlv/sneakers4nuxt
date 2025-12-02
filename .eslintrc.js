@@ -37,6 +37,7 @@ module.exports = {
     'no-multi-spaces': 'error',
     'no-console': 0,
     'unused-imports/no-unused-imports': 'error',
+    curly: 0,
 
     // --- зависимости между слоями (element-types)
     // здесь описываем, какие слои могут импортировать какие слои

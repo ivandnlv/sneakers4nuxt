@@ -13,8 +13,19 @@ export function initializeStrapi () {
   }
 
   strapiInstance = $http.create({
-    baseURL: `${import.meta.server ? 'http://localhost:3000' : ''}/api/strapi`,
-    headers: useRequestHeaders(['cookie']) ?? undefined
+    baseURL: `${import.meta.server ? 'http://localhost:3000' : ''}/api/strapi`
+  })
+
+  strapiInstance.onRequest((config) => {
+    if (import.meta.server) return
+
+    const { token } = useAuth()
+
+    if (!token.value) return
+
+    if (!config?.headers) config.headers = {} as Record<string, string>
+
+    (config.headers as Record<string, string>).authorization = `Bearer ${token.value}`
   })
 
   strapi = apiFactory(strapiInstance)

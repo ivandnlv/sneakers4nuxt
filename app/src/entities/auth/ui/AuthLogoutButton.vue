@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import type { ButtonProps } from '#ui/types'
-import { useAuthStore } from '../model/store/use-auth-store'
-import { strapiAuthApi } from '~/src/shared/strapi/auth'
 
 const props = withDefaults(defineProps<ButtonProps>(), {
   label: 'Выйти',
@@ -9,19 +7,14 @@ const props = withDefaults(defineProps<ButtonProps>(), {
   color: 'gray'
 })
 
-const store = useAuthStore()
+const { signOut } = useAuth()
 
 const [isLoading, toggleLoading] = useToggle()
 
 async function logout () {
   toggleLoading(true)
 
-  try {
-    await strapiAuthApi.logout()
-  } finally {
-    store.resetUserData()
-    toggleLoading(false)
-  }
+  await signOut()
 }
 </script>
 
